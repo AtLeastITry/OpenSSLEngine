@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28705.295
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenSSLEngine.Domain", "OpenSSLEngine\OpenSSLEngine.Domain.csproj", "{2EA70C97-BFE1-4003-B62A-FF4348418C60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenSSLEngine.Domain", "OpenSSLEngine.Domain\OpenSSLEngine.Domain.csproj", "{2EA70C97-BFE1-4003-B62A-FF4348418C60}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenSSLEngine.Windows", "OpenSSLEngine.Windows\OpenSSLEngine.Windows.csproj", "{A6127AF3-C4C9-405F-B16F-09AFDFC3B168}"
 EndProject

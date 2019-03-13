@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OpenSSLEngine.Abstraction\OpenSSLEngine.Abstraction.csproj" />
-    <ProjectReference Include="..\OpenSSLEngine\OpenSSLEngine.Domain.csproj" />
+    <ProjectReference Include="..\OpenSSLEngine.Domain\OpenSSLEngine.Domain.csproj" />
   </ItemGroup>
 
 </Project>

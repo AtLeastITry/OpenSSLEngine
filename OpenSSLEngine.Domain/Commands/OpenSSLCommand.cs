@@ -1,10 +1,9 @@
 ﻿using OpenSSLEngine.Abstraction.Commands;
 using System;
 using System.Diagnostics;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace OpenSSLEngine.Core.Domain
+namespace OpenSSLEngine.Domain
 {
     public class OpenSSLCommand<TOptions, TInput>: ICommand<TOptions, TInput>
         where TOptions : ICommandOptions
@@ -33,7 +32,34 @@ namespace OpenSSLEngine.Core.Domain
             return process;
         }
 
-        private void internalExecute(TOptions options, TInput input)
+        private static Task WaitForUserInputAsync(Process process)
+        {
+            while (!CheckProcessThreads(process.Threads));
+
+            return Task.CompletedTask;
+        }
+
+        private static void WaitForUserInput(Process process)
+        {
+            while (!CheckProcessThreads(process.Threads)) ;
+
+            return;
+        }
+
+        private static bool CheckProcessThreads(ProcessThreadCollection threads)
+        {
+            foreach(ProcessThread thread in threads)
+            {
+                if (thread.ThreadState == ThreadState.Wait && (thread.WaitReason == ThreadWaitReason.UserRequest || thread.WaitReason == ThreadWaitReason.LpcReply))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public void Execute(TOptions options, TInput input)
         {
             using (var process = this.BuildProcess())
             {
@@ -41,27 +67,34 @@ namespace OpenSSLEngine.Core.Domain
 
                 process.StandardInput.WriteLine($"req {options.BuildArguments()}");
 
-                Thread.Sleep(1000);
-
                 foreach (var item in input)
                 {
+                    WaitForUserInput(process);
                     process.StandardInput.WriteLine(item);
                 }
 
+                WaitForUserInput(process);
                 process.StandardInput.WriteLine("exit");
             }
         }
 
-        public void Execute(TOptions options, TInput input)
+        public async Task ExecuteAsync(TOptions options, TInput input)
         {
-            this.internalExecute(options, input);
-        }
+            using (var process = this.BuildProcess())
+            {
+                process.Start();
 
-        public Task ExecuteAsync(TOptions options, TInput input)
-        {
-            this.internalExecute(options, input);
+                process.StandardInput.WriteLine($"req {options.BuildArguments()}");
 
-            return Task.CompletedTask;
+                foreach (var item in input)
+                {
+                    await WaitForUserInputAsync(process);
+                    process.StandardInput.WriteLine(item);
+                }
+
+                await WaitForUserInputAsync(process);
+                process.StandardInput.WriteLine("exit");
+            }
         }
     }
 }

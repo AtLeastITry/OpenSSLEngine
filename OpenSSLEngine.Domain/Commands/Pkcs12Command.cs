@@ -1,7 +1,7 @@
 ﻿using OpenSSLEngine.Abstraction.Commands;
 using OpenSSLEngine.Abstraction.Commands.Pkcs12;
 
-namespace OpenSSLEngine.Core.Domain
+namespace OpenSSLEngine.Domain
 {
     public class Pkcs12Command : OpenSSLCommand<Pkcs12Options, Pkcs12Input>
     {

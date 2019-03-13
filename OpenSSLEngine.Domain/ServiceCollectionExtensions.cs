@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using OpenSSLEngine.Abstraction.Commands;
 using OpenSSLEngine.Abstraction.Commands.Pkcs12;
 using OpenSSLEngine.Abstraction.Commands.Req;
-using OpenSSLEngine.Core.Domain;
 using OpenSSLEngine.Linux;
 using OpenSSLEngine.OSX;
 using OpenSSLEngine.Windows;

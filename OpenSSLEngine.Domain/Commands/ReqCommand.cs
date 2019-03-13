@@ -1,7 +1,7 @@
 ﻿using OpenSSLEngine.Abstraction.Commands;
 using OpenSSLEngine.Abstraction.Commands.Req;
 
-namespace OpenSSLEngine.Core.Domain
+namespace OpenSSLEngine.Domain
 {
     public class ReqCommand: OpenSSLCommand<ReqOptions, ReqInput>
     {
