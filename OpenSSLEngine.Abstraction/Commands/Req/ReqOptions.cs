@@ -179,7 +179,7 @@ namespace OpenSSLEngine.Abstraction.Commands.Req
         /// This option can be given multiple times.
         /// </summary>
         [OptionAlias("-addext")]
-        public int AddExt { get; set; }
+        public int? AddExt { get; set; }
 
         public string BuildArguments()
         {
