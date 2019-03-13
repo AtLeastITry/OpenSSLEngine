@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OpenSSLEngine.Abstraction\OpenSSLEngine.Abstraction.csproj" />
+    <ProjectReference Include="..\OpenSSLEngine.OSX\OpenSSLEngine.OSX.csproj" />
+    <ProjectReference Include="..\OpenSSLEngine.Linux\OpenSSLEngine.Linux.csproj" />
+    <ProjectReference Include="..\OpenSSLEngine.Windows\OpenSSLEngine.Windows.csproj" />
+  </ItemGroup>
+
+</Project>
