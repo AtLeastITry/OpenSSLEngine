@@ -6,9 +6,14 @@ namespace OpenSSLEngine.Linux
 {
     internal class OpenSSlPathProvider : IOpenSSLPathProvider
     {
-        public string BuildPath()
+        public string BuildOpenSSLConfigPath()
         {
-            return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\lib\openssl.exe";
+            throw new System.NotImplementedException();
+        }
+
+        public string BuildOpenSSLStartPath()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

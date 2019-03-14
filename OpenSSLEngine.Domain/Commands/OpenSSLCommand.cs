@@ -1,4 +1,4 @@
-﻿using OpenSSLEngine.Abstraction.Commands;
+using OpenSSLEngine.Abstraction.Commands;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -28,7 +28,7 @@ namespace OpenSSLEngine.Domain
             process.StartInfo.RedirectStandardInput = true;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.UseShellExecute = false;
-            process.StartInfo.FileName = _openSSLPathProvider.BuildPath();
+            process.StartInfo.FileName = _openSSLPathProvider.BuildOpenSSLStartPath();
             return process;
         }
 
@@ -64,7 +64,7 @@ namespace OpenSSLEngine.Domain
             using (var process = this.BuildProcess())
             {
                 process.Start();
-
+                process.StandardInput.WriteLine($"{options.BuildArguments()} -config {_openSSLPathProvider.BuildOpenSSLConfigPath()}");
                 process.StandardInput.WriteLine($"req {options.BuildArguments()}");
 
                 foreach (var item in input)
@@ -84,7 +84,7 @@ namespace OpenSSLEngine.Domain
             {
                 process.Start();
 
-                process.StandardInput.WriteLine($"req {options.BuildArguments()}");
+                process.StandardInput.WriteLine($"{options.BuildArguments()} -config {_openSSLPathProvider.BuildOpenSSLConfigPath()}");
 
                 foreach (var item in input)
                 {

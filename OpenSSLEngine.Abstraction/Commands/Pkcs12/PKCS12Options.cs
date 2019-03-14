@@ -234,7 +234,7 @@ namespace OpenSSLEngine.Abstraction.Commands.Pkcs12
         public string BuildArguments()
         {
             var sb = new StringBuilder();
-            sb.Append("pkcs12 ");
+            sb.Append("pkcs12");
             foreach (var prop in typeof(Pkcs12Options).GetProperties())
             {
                 OptionAliasAttribute alias = (OptionAliasAttribute)prop.GetCustomAttributes(true).First(a => a.GetType() == typeof(OptionAliasAttribute));

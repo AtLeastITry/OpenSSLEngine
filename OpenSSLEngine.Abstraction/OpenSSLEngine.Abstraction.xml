@@ -1,0 +1,430 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenSSLEngine.Abstraction</name>
+    </assembly>
+    <members>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.In">
+            <summary>
+            This specifies filename of the PKCS#12 file to be parsed. 
+             Standard input is used by default.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Out">
+            <summary>
+            The filename to write certificates and private keys to, standard output by defaul
+            They are all written in PEM format.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.PassIn">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.PassOut">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoOut">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.ClCerts">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CaCerts">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoCerts">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoKeys">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Info">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Des">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Des3">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Idea">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.AES">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.ARIA">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Camellia">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Nodes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoMACVer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.TwoPass">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Export">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.InKey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CertFile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CaName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Pass">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Chain">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.DesCert">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.KeyPBE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CertPBE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.KeyEx">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.KeySig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.MACAlg">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoMACIter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoIter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.MACIter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoMAC">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Rand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CAFile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CAPath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoCAFile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoCAPath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CSP">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqInput.CountryName">
+            <summary>
+            Country Name (2 letter code)
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqInput.StateOrProvinceName">
+            <summary>
+            State or Province Name (full name)
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqInput.LocalityName">
+            <summary>
+            Locality Name (eg, city)
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqInput.OrganizationName">
+            <summary>
+            Oganization Name (eg, company)
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqInput.OrganizationalUnitName">
+            <summary>
+            Organizational Unit Name (eg, section)
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqInput.CommonName">
+            <summary>
+            Common Name (e.g. server FQDN or Your name)
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqInput.EmailAddress">
+            <summary>
+            Email Address
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.InForm">
+            <summary>
+            This specifies the input format. 
+            The DER option uses an ASN1 DER encoded form compatible with the PKCS#10. 
+            The PEM form is the default format: it consists of the DER format base64 encoded with additional header and footer lines
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.OutForm">
+            <summary>
+            This specifies the output format, the options have the same meaning as the -inform option.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.In">
+            <summary>
+            This specifies the input filename to read a request from or standard input if this option is not specified. 
+            A request is only read if the creation options (-new and -newkey) are not specified.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.PassIn">
+            <summary>
+            The input file password source. 
+            For more information about the format of arg see the PASS PHRASE ARGUMENTS section in <see href="https://www.openssl.org/docs/man1.0.2/man1/openssl.htmlm">openssl(1)</see>.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Out">
+            <summary>
+            This specifies the output filename to write to or standard output by default.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.PassOut">
+            <summary>
+            The output file password source. For more information about the format of arg see the PASS PHRASE ARGUMENTS section in <see href="https://www.openssl.org/docs/man1.0.2/man1/openssl.htmlm">openssl(1)</see>.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Text">
+            <summary>
+            prints out the certificate request in text form.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Subject">
+            <summary>
+            Prints out the request subject (or certificate subject if -x509 is specified)
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.PubKey">
+            <summary>
+            Outputs the public key.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.NoOut">
+            <summary>
+            This option prevents output of the encoded version of the request.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Modulus">
+            <summary>
+            This option prints out the value of the modulus of the public key contained in the request.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Verify">
+            <summary>
+            Verifies the signature on the request.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.New">
+             <summary>
+             this option generates a new certificate request. 
+             It will prompt the user for the relevant field values. 
+             The actual fields prompted for and their maximum and minimum sizes are specified in the configuration file and any requested extensions.
+             
+            If the -key option is not used it will generate a new RSA private key using information specified in the configuration file.
+             </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Subj">
+            <summary>
+            Replaces subject field of input request with specified data and outputs modified request. 
+            The arg must be formatted as /type0=value0/type1=value1/type2=..., characters may be escaped by \ (backslash), no spaces are skipped.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Rand">
+            <summary>
+            a file or files containing random data used to seed the random number generator, or an EGD socket (see RAND_egd(3)). 
+            Multiple files can be specified separated by a OS-dependent character. The separator is ; for MS-Windows, , for OpenVMS, and : for all others.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.WriteRand">
+            <summary>
+            Writes random data to the specified file upon exit. 
+            This can be used with a subsequent -rand flag.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.NewKey">
+             <summary>
+             this option creates a new certificate request and a new private key. The argument takes one of several forms. rsa:nbits, where nbits is the number of bits, generates an RSA key nbits in size. If nbits is omitted, i.e. -newkey rsa specified, the default key size, specified in the configuration file is used.
+            
+            All other algorithms support the -newkey alg:file form, where file may be an algorithm parameter file, created by the genpkey -genparam command or and X.509 certificate for a key with approriate algorithm.
+            
+            param:file generates a key using the parameter file or certificate file, the algorithm is determined by the parameters.algname:file use algorithm algname and parameter file file: the two algorithms must match or an error occurs.algname just uses algorithm algname, and parameters, if neccessary should be specified via -pkeyopt parameter.
+            
+            dsa:filename generates a DSA key using the parameters in the file filename.ec:filename generates EC key(usable both with ECDSA or ECDH algorithms), gost2001:filename generates GOST R 34.10-2001 key(requires ccgost engine configured in the configuration file). If just gost2001 is specified a parameter set should be specified by -pkeyopt paramset:X
+             </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.PKeyOpt">
+            <summary>
+            set the public key algorithm option opt to value. 
+            The precise set of options supported depends on the public key algorithm used and its implementation. See KEY GENERATION OPTIONS in the genpkey manual page for more details.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Key">
+            <summary>
+            This specifies the file to read the private key from. It also accepts PKCS#8 format private keys for PEM format files.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.KeyForm">
+            <summary>
+            the format of the private key file specified in the -key argument. PEM is the default.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.KeyOut">
+            <summary>
+            this gives the filename to write the newly created private key to. If this option is not specified then the filename present in the configuration file is used.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Nodes">
+            <summary>
+            if this option is specified then if a private key is created it will not be encrypted.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Digest">
+             <summary>
+             this specifies the message digest to sign the request with (such as -md5, -sha1). This overrides the digest algorithm specified in the configuration file.
+            
+            Some public key algorithms may override this choice.For instance, DSA signatures always use SHA1, GOST R 34.10 signatures always use GOST R 34.11-94 (-md_gost94).
+             </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Config" -->
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.MultiValueRdn">
+             <summary>
+             this option causes the -subj argument to be interpreted with full support for multivalued RDNs. Example:
+            
+             /DC=org/DC=OpenSSL/DC=users/UID=123456+CN=John Doe
+            
+             If -multi-rdn is not used then the UID value is 123456+CN=John Doe.
+             </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.X509">
+             <summary>
+             this option outputs a self signed certificate instead of a certificate request. This is typically used to generate a test certificate or a self signed root CA. The extensions added to the certificate (if any) are specified in the configuration file. Unless specified using the set_serial option, a large random number will be used for the serial number.
+            
+             If existing request is specified with the -in option, it is converted to the self signed certificate otherwise new request is created.
+             </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Days">
+            <summary>
+            when the -x509 option is being used this specifies the number of days to certify the certificate for. The default is 30 days.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.SetSerial">
+            <summary>
+            serial number to use when outputting a self signed certificate. This may be specified as a decimal value or a hex value if preceded by 0x. It is possible to use negative serial numbers but this is not recommended.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.AddExt">
+            <summary>
+            Add a specific extension to the certificate(if the -x509 option is present) or certificate request.
+            The argument must have the form of a key=value pair as it would appear in a config file.
+            
+            This option can be given multiple times.
+            </summary>
+        </member>
+    </members>
+</doc>

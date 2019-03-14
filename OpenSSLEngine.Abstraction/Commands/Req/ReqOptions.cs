@@ -184,7 +184,7 @@ namespace OpenSSLEngine.Abstraction.Commands.Req
         public string BuildArguments()
         {
             var sb = new StringBuilder();
-            sb.Append("req ");
+            sb.Append("req");
             foreach(var prop in typeof(ReqOptions).GetProperties())
             {
                 OptionAliasAttribute alias = (OptionAliasAttribute)prop.GetCustomAttributes(true).First(a => a.GetType() == typeof(OptionAliasAttribute));
