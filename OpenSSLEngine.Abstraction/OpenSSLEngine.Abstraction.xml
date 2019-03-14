@@ -4,6 +4,11 @@
         <name>OpenSSLEngine.Abstraction</name>
     </assembly>
     <members>
+        <member name="T:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options">
+            <summary>
+            Options for the pkcs12 command.
+            </summary>
+        </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.In">
             <summary>
             This specifies filename of the PKCS#12 file to be parsed. 
@@ -221,6 +226,17 @@
             
             </summary>
         </member>
+        <member name="M:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.ToString">
+            <summary>
+            Returns string that represents the options
+            </summary>
+        </member>
+        <member name="M:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.GetEnumerator">
+            <summary>
+            Returns enumerator for options
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqInput.CountryName">
             <summary>
             Country Name (2 letter code)
@@ -254,6 +270,11 @@
         <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqInput.EmailAddress">
             <summary>
             Email Address
+            </summary>
+        </member>
+        <member name="T:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions">
+            <summary>
+            Options for the req command.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.InForm">
@@ -391,7 +412,11 @@
             Some public key algorithms may override this choice.For instance, DSA signatures always use SHA1, GOST R 34.10 signatures always use GOST R 34.11-94 (-md_gost94).
              </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Config" -->
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.Config">
+            <summary>
+            this allows an alternative configuration file to be specified, this overrides the compile time filename or any specified in the OPENSSL_CONF environment variable.
+            </summary>
+        </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.MultiValueRdn">
              <summary>
              this option causes the -subj argument to be interpreted with full support for multivalued RDNs. Example:
@@ -425,6 +450,17 @@
             
             This option can be given multiple times.
             </summary>
+        </member>
+        <member name="M:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.ToString">
+            <summary>
+            Returns string that represents the options
+            </summary>
+        </member>
+        <member name="M:OpenSSLEngine.Abstraction.Commands.Req.ReqOptions.GetEnumerator">
+            <summary>
+            Returns enumerator for options
+            </summary>
+            <returns></returns>
         </member>
     </members>
 </doc>

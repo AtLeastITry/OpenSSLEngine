@@ -1,7 +1,9 @@
-﻿namespace OpenSSLEngine.Abstraction.Commands
+﻿using System;
+using System.Collections.Generic;
+
+namespace OpenSSLEngine.Abstraction.Commands
 {
-    public interface ICommandOptions
+    public interface ICommandOptions: IEnumerable<Tuple<object, string>>
     {
-        string BuildArguments();
     }
 }

@@ -1,6 +1,7 @@
 using OpenSSLEngine.Abstraction.Commands;
 using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OpenSSLEngine.Domain
@@ -19,29 +20,32 @@ namespace OpenSSLEngine.Domain
             _openSSLPathProvider = openSSLPathProvider;
         }
 
-        public Process BuildProcess()
+        private ProcessStartInfo BuildProcessInfo()
         {
-            var process = new Process();
-            process.StartInfo.CreateNoWindow = true;
-            process.StartInfo.ErrorDialog = false;
-            process.StartInfo.RedirectStandardError = true;
-            process.StartInfo.RedirectStandardInput = true;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.FileName = _openSSLPathProvider.BuildOpenSSLStartPath();
-            return process;
+            return new ProcessStartInfo()
+            {
+                CreateNoWindow = true,
+                ErrorDialog = false,
+                RedirectStandardError = true,
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                FileName = _openSSLPathProvider.GetOpenSSLStartPath()
+            };
         }
 
         private static Task WaitForUserInputAsync(Process process)
         {
-            while (!CheckProcessThreads(process.Threads));
+            //while (!CheckProcessThreads(process.Threads));
+            Thread.Sleep(1000);
 
             return Task.CompletedTask;
         }
 
         private static void WaitForUserInput(Process process)
         {
-            while (!CheckProcessThreads(process.Threads)) ;
+            //while (!CheckProcessThreads(process.Threads)) ;
+            Thread.Sleep(1000);
 
             return;
         }
@@ -50,7 +54,7 @@ namespace OpenSSLEngine.Domain
         {
             foreach(ProcessThread thread in threads)
             {
-                if (thread.ThreadState == ThreadState.Wait && (thread.WaitReason == ThreadWaitReason.UserRequest || thread.WaitReason == ThreadWaitReason.LpcReply))
+                if (thread.ThreadState == System.Diagnostics.ThreadState.Wait && (thread.WaitReason == ThreadWaitReason.UserRequest || thread.WaitReason == ThreadWaitReason.LpcReply))
                 {
                     return true;
                 }
@@ -61,11 +65,9 @@ namespace OpenSSLEngine.Domain
 
         public void Execute(TOptions options, TInput input)
         {
-            using (var process = this.BuildProcess())
+            using (var process = Process.Start(this.BuildProcessInfo()))
             {
-                process.Start();
-                process.StandardInput.WriteLine($"{options.BuildArguments()} -config {_openSSLPathProvider.BuildOpenSSLConfigPath()}");
-                process.StandardInput.WriteLine($"req {options.BuildArguments()}");
+                process.StandardInput.WriteLine($"{options} -config {_openSSLPathProvider.GetOpenSSLConfigPath()}");
 
                 foreach (var item in input)
                 {
@@ -80,11 +82,9 @@ namespace OpenSSLEngine.Domain
 
         public async Task ExecuteAsync(TOptions options, TInput input)
         {
-            using (var process = this.BuildProcess())
+            using (var process = Process.Start(this.BuildProcessInfo()))
             {
-                process.Start();
-
-                process.StandardInput.WriteLine($"{options.BuildArguments()} -config {_openSSLPathProvider.BuildOpenSSLConfigPath()}");
+                process.StandardInput.WriteLine($"{options} -config {_openSSLPathProvider.GetOpenSSLConfigPath()}");
 
                 foreach (var item in input)
                 {

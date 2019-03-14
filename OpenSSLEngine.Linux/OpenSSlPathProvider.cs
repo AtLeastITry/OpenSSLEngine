@@ -6,12 +6,12 @@ namespace OpenSSLEngine.Linux
 {
     internal class OpenSSlPathProvider : IOpenSSLPathProvider
     {
-        public string BuildOpenSSLConfigPath()
+        public string GetOpenSSLConfigPath()
         {
             throw new System.NotImplementedException();
         }
 
-        public string BuildOpenSSLStartPath()
+        public string GetOpenSSLStartPath()
         {
             throw new System.NotImplementedException();
         }

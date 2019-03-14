@@ -6,12 +6,12 @@ namespace OpenSSLEngine.Windows
 {
     internal class OpenSSlPathProvider : IOpenSSLPathProvider
     {
-        public string BuildOpenSSLConfigPath()
+        public string GetOpenSSLConfigPath()
         {
             return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\lib\openssl.cfg";
         }
 
-        public string BuildOpenSSLStartPath()
+        public string GetOpenSSLStartPath()
         {
             return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\lib\openssl.exe";
         }
