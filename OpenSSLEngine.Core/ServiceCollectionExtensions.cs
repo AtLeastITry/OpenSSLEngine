@@ -18,6 +18,8 @@ namespace OpenSSLEngine.Core
 
             source.TryAdd(GetServices());
 
+            OpenSSLEngineFactory.Initialize(() => source.BuildServiceProvider().GetService<IOpenSSLEngine>());
+
             return source;
         }
 
