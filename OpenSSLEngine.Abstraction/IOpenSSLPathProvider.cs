@@ -1,4 +1,4 @@
-﻿namespace OpenSSLEngine.Abstraction.Commands
+﻿namespace OpenSSLEngine.Abstraction
 {
     public interface IOpenSSLPathProvider
     {

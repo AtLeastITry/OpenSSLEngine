@@ -1,6 +1,8 @@
+﻿using OpenSSLEngine.Abstraction;
 using OpenSSLEngine.Abstraction.Commands;
 using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OpenSSLEngine.Domain
@@ -10,13 +12,19 @@ namespace OpenSSLEngine.Domain
         where TInput : ICommandInput
     {
         private readonly IOpenSSLPathProvider _openSSLPathProvider;
+        private readonly IOpenSSLResourceExtractor _openSSLResourceExtractor;
 
-        public OpenSSLCommand(IOpenSSLPathProvider openSSLPathProvider)
+        public OpenSSLCommand(IOpenSSLPathProvider openSSLPathProvider, IOpenSSLResourceExtractor openSSLResourceExtractor)
         {
             if (openSSLPathProvider == null)
                 throw new ArgumentNullException(nameof(openSSLPathProvider));
+            if (openSSLResourceExtractor == null)
+                throw new ArgumentNullException(nameof(openSSLResourceExtractor));
 
             _openSSLPathProvider = openSSLPathProvider;
+            _openSSLResourceExtractor = openSSLResourceExtractor;
+
+            _openSSLResourceExtractor.Extract();
         }
 
         public Process BuildProcess()
@@ -34,14 +42,16 @@ namespace OpenSSLEngine.Domain
 
         private static Task WaitForUserInputAsync(Process process)
         {
-            while (!CheckProcessThreads(process.Threads));
+            //while (!CheckProcessThreads(process.Threads));
+            Thread.Sleep(1000);
 
             return Task.CompletedTask;
         }
 
         private static void WaitForUserInput(Process process)
         {
-            while (!CheckProcessThreads(process.Threads)) ;
+            //while (!CheckProcessThreads(process.Threads)) ;
+            Thread.Sleep(1000);
 
             return;
         }
@@ -50,7 +60,7 @@ namespace OpenSSLEngine.Domain
         {
             foreach(ProcessThread thread in threads)
             {
-                if (thread.ThreadState == ThreadState.Wait && (thread.WaitReason == ThreadWaitReason.UserRequest || thread.WaitReason == ThreadWaitReason.LpcReply))
+                if (thread.ThreadState == System.Diagnostics.ThreadState.Wait && (thread.WaitReason == ThreadWaitReason.UserRequest || thread.WaitReason == ThreadWaitReason.LpcReply))
                 {
                     return true;
                 }
@@ -64,8 +74,7 @@ namespace OpenSSLEngine.Domain
             using (var process = this.BuildProcess())
             {
                 process.Start();
-                process.StandardInput.WriteLine($"{options.BuildArguments()} -config {_openSSLPathProvider.BuildOpenSSLConfigPath()}");
-                process.StandardInput.WriteLine($"req {options.BuildArguments()}");
+                process.StandardInput.WriteLine($"{options} -config {_openSSLPathProvider.BuildOpenSSLConfigPath()}");
 
                 foreach (var item in input)
                 {
@@ -84,7 +93,7 @@ namespace OpenSSLEngine.Domain
             {
                 process.Start();
 
-                process.StandardInput.WriteLine($"{options.BuildArguments()} -config {_openSSLPathProvider.BuildOpenSSLConfigPath()}");
+                process.StandardInput.WriteLine($"{options} -config {_openSSLPathProvider.BuildOpenSSLConfigPath()}");
 
                 foreach (var item in input)
                 {

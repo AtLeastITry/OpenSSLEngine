@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using OpenSSLEngine.Abstraction;
 using OpenSSLEngine.Abstraction.Commands;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace OpenSSLEngine.Windows
 {
@@ -20,7 +22,8 @@ namespace OpenSSLEngine.Windows
 
         private static IEnumerable<ServiceDescriptor> GetWindowsServices()
         {
-            yield return ServiceDescriptor.Scoped<IOpenSSLPathProvider, OpenSSlPathProvider>();
+            yield return ServiceDescriptor.Singleton<IOpenSSLPathProvider, OpenSSlPathProvider>();
+            yield return ServiceDescriptor.Singleton<IOpenSSLResourceExtractor, OpenSSLResourceExtractor>();
         }
     }
 }

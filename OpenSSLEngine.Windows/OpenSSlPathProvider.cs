@@ -1,4 +1,4 @@
-﻿using OpenSSLEngine.Abstraction.Commands;
+﻿using OpenSSLEngine.Abstraction;
 using System.IO;
 using System.Reflection;
 

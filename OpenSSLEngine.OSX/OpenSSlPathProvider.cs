@@ -1,6 +1,4 @@
-﻿using OpenSSLEngine.Abstraction.Commands;
-using System.IO;
-using System.Reflection;
+﻿using OpenSSLEngine.Abstraction;
 
 namespace OpenSSLEngine.OSX
 {
