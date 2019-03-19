@@ -2,7 +2,7 @@
 {
     public interface IOpenSSLPathProvider
     {
-        string BuildOpenSSLStartPath();
-        string BuildOpenSSLConfigPath();
+        string GetOpenSSLStartPath();
+        string GetOpenSSLConfigPath();
     }
 }

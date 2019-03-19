@@ -27,17 +27,18 @@ namespace OpenSSLEngine.Domain
             _openSSLResourceExtractor.Extract();
         }
 
-        public Process BuildProcess()
+        private ProcessStartInfo BuildProcessInfo()
         {
-            var process = new Process();
-            process.StartInfo.CreateNoWindow = true;
-            process.StartInfo.ErrorDialog = false;
-            process.StartInfo.RedirectStandardError = true;
-            process.StartInfo.RedirectStandardInput = true;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.FileName = _openSSLPathProvider.BuildOpenSSLStartPath();
-            return process;
+            return new ProcessStartInfo()
+            {
+                CreateNoWindow = true,
+                ErrorDialog = false,
+                RedirectStandardError = true,
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                FileName = _openSSLPathProvider.GetOpenSSLStartPath()
+            };
         }
 
         private static Task WaitForUserInputAsync(Process process)
@@ -71,10 +72,9 @@ namespace OpenSSLEngine.Domain
 
         public void Execute(TOptions options, TInput input)
         {
-            using (var process = this.BuildProcess())
+            using (var process = Process.Start(this.BuildProcessInfo()))
             {
-                process.Start();
-                process.StandardInput.WriteLine($"{options} -config {_openSSLPathProvider.BuildOpenSSLConfigPath()}");
+                process.StandardInput.WriteLine($"{options} -config {_openSSLPathProvider.GetOpenSSLConfigPath()}");
 
                 foreach (var item in input)
                 {
@@ -89,11 +89,9 @@ namespace OpenSSLEngine.Domain
 
         public async Task ExecuteAsync(TOptions options, TInput input)
         {
-            using (var process = this.BuildProcess())
+            using (var process = Process.Start(this.BuildProcessInfo()))
             {
-                process.Start();
-
-                process.StandardInput.WriteLine($"{options} -config {_openSSLPathProvider.BuildOpenSSLConfigPath()}");
+                process.StandardInput.WriteLine($"{options} -config {_openSSLPathProvider.GetOpenSSLConfigPath()}");
 
                 foreach (var item in input)
                 {

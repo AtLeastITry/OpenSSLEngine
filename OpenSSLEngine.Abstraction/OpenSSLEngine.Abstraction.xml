@@ -23,207 +23,212 @@
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.PassIn">
             <summary>
-            
+            The PKCS#12 file (i.e. input file) password source. For more information about the format of arg see the PASS PHRASE ARGUMENTS section in openssl(1).
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.PassOut">
             <summary>
-            
+            Pass phrase source to encrypt any outputted private keys with. For more information about the format of arg see the PASS PHRASE ARGUMENTS section in openssl(1).
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Password">
             <summary>
-            
+            With -export, -password is equivalent to -passout. Otherwise, -password is equivalent to -passin.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoOut">
             <summary>
-            
+            This option inhibits output of the keys and certificates to the output file version of the PKCS#12 file.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.ClCerts">
             <summary>
-            
+            Only output client certificates (not CA certificates).
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CaCerts">
             <summary>
-            
+            Only output CA certificates (not client certificates).
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoCerts">
             <summary>
-            
+            No certificates at all will be output.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoKeys">
             <summary>
-            
+            No private keys will be output.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Info">
             <summary>
-            
+            Output additional information about the PKCS#12 file structure, algorithms used and iteration counts.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Des">
             <summary>
-            
+            Use DES to encrypt private keys before outputting.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Des3">
             <summary>
-            
+            Use triple DES to encrypt private keys before outputting, this is the default.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Idea">
             <summary>
-            
+            Use IDEA to encrypt private keys before outputting.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.AES">
             <summary>
-            
+            Use AES to encrypt private keys before outputting.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.ARIA">
             <summary>
-            
+            Use ARIA to encrypt private keys before outputting.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Camellia">
             <summary>
-            
+            Use Camellia to encrypt private keys before outputting.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Nodes">
             <summary>
-            
+            Don't encrypt the private keys at all.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoMACVer">
             <summary>
-            
+            Don't attempt to verify the integrity MAC before reading the file.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.TwoPass">
             <summary>
-            
+            Prompt for separate integrity and encryption passwords: most software always assumes these are the same so this option will render such PKCS#12 files unreadable. Cannot be used in combination with the options -password, -passin (if importing) or -passout (if exporting).
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Export">
             <summary>
-            
+            This option specifies that a PKCS#12 file will be created rather than parsed.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.InKey">
             <summary>
-            
+            File to read private key from. If not present then a private key must be present in the input file. If no engine is used, the argument is taken as a file; if an engine is specified, the argument is given to the engine as a key identifier.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Name">
             <summary>
-            
+            This specifies the "friendly name" for the certificate and private key. This name is typically displayed in list boxes by software importing the file.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CertFile">
             <summary>
-            
+            A filename to read additional certificates from.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CaName">
             <summary>
-            
+            This specifies the "friendly name" for other certificates. This option may be used multiple times to specify names for all certificates in the order they appear. Netscape ignores friendly names on other certificates whereas MSIE displays them.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Pass">
             <summary>
-            
+            The PKCS#12 file (i.e. output file) password source. For more information about the format of arg see the PASS PHRASE ARGUMENTS section in openssl(1).
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Chain">
             <summary>
-            
+            If this option is present then an attempt is made to include the entire certificate chain of the user certificate. The standard CA store is used for this search. If the search fails it is considered a fatal error.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.DesCert">
             <summary>
-            
+            Encrypt the certificate using triple DES, this may render the PKCS#12 file unreadable by some "export grade" software. By default the private key is encrypted using triple DES and the certificate using 40 bit RC2.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.KeyPBE">
             <summary>
-            
+            These options allow the algorithm used to encrypt the private key and certificates to be selected. Any PKCS#5 v1.5 or PKCS#12 PBE algorithm name can be used (see NOTES section for more information). If a cipher name (as output by the list-cipher-algorithms command is specified then it is used with PKCS#5 v2.0. For interoperability reasons it is advisable to only use PKCS#12 algorithms.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CertPBE">
             <summary>
-            
+            These options allow the algorithm used to encrypt the private key and certificates to be selected. Any PKCS#5 v1.5 or PKCS#12 PBE algorithm name can be used (see NOTES section for more information). If a cipher name (as output by the list-cipher-algorithms command is specified then it is used with PKCS#5 v2.0. For interoperability reasons it is advisable to only use PKCS#12 algorithms.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.KeyEx">
             <summary>
-            
+            Specifies that the private key is to be used for key exchange or just signing. This option is only interpreted by MSIE and similar MS software. Normally "export grade" software will only allow 512 bit RSA keys to be used for encryption purposes but arbitrary length keys for signing. The -keysig option marks the key for signing only. Signing only keys can be used for S/MIME signing, authenticode (ActiveX control signing) and SSL client authentication, however due to a bug only MSIE 5.0 and later support the use of signing only keys for SSL client authentication.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.KeySig">
             <summary>
-            
+            Specifies that the private key is to be used for key exchange or just signing. This option is only interpreted by MSIE and similar MS software. Normally "export grade" software will only allow 512 bit RSA keys to be used for encryption purposes but arbitrary length keys for signing. The -keysig option marks the key for signing only. Signing only keys can be used for S/MIME signing, authenticode (ActiveX control signing) and SSL client authentication, however due to a bug only MSIE 5.0 and later support the use of signing only keys for SSL client authentication.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.MACAlg">
             <summary>
-            
+            Specify the MAC digest algorithm. If not included them SHA1 will be used.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoMACIter">
             <summary>
-            
+            These options affect the iteration counts on the MAC and key algorithms. Unless you wish to produce files compatible with MSIE 4.0 you should leave these options alone. To discourage attacks by using large dictionaries of common passwords the algorithm that derives keys from passwords can have an iteration count applied to it: this causes a certain part of the algorithm to be repeated and slows it down. The MAC is used to check the file integrity but since it will normally have the same password as the keys and certificates it could also be attacked.By default both MAC and encryption iteration counts are set to 2048, using these options the MAC and encryption iteration counts can be set to 1, since this reduces the file security you should not use these options unless you really have to.Most software supports both MAC and key iteration counts.MSIE 4.0 doesn't support MAC iteration counts so it needs the -nomaciter option.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoIter">
             <summary>
-            
+            These options affect the iteration counts on the MAC and key algorithms. Unless you wish to produce files compatible with MSIE 4.0 you should leave these options alone. To discourage attacks by using large dictionaries of common passwords the algorithm that derives keys from passwords can have an iteration count applied to it: this causes a certain part of the algorithm to be repeated and slows it down. The MAC is used to check the file integrity but since it will normally have the same password as the keys and certificates it could also be attacked.By default both MAC and encryption iteration counts are set to 2048, using these options the MAC and encryption iteration counts can be set to 1, since this reduces the file security you should not use these options unless you really have to.Most software supports both MAC and key iteration counts.MSIE 4.0 doesn't support MAC iteration counts so it needs the -nomaciter option.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.MACIter">
             <summary>
-            
+            This option is included for compatibility with previous versions, it used to be needed to use MAC iterations counts but they are now used by default.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoMAC">
             <summary>
-            
+            Don't attempt to provide the MAC integrity.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Rand">
             <summary>
-            
+            A file or files containing random data used to seed the random number generator. Multiple files can be specified separated by an OS-dependent character. The separator is ; for MS-Windows, , for OpenVMS, and : for all others.
+            </summary>
+        </member>
+        <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.WriteRand">
+            <summary>
+            Writes random data to the specified file upon exit. This can be used with a subsequent -rand flag.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CAFile">
             <summary>
-            
+            CA storage as a file.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CAPath">
             <summary>
-            
+            CA storage as a directory. This directory must be a standard certificate directory: that is a hash of each subject name (using x509 -hash) should be linked to each certificate.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoCAFile">
             <summary>
-            
+            Do not load the trusted CA certificates from the default file location.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoCAPath">
             <summary>
-            
+            Do not load the trusted CA certificates from the default directory location.
             </summary>
         </member>
         <member name="P:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CSP">
             <summary>
-            
+            Write name as a Microsoft CSP name.
             </summary>
         </member>
         <member name="M:OpenSSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.ToString">
