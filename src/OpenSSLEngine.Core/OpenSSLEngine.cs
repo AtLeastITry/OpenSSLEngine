@@ -9,8 +9,8 @@ namespace OpenSSLEngine.Core
 {
     internal class OpenSSLEngine : IOpenSSLEngine
     {
-        private ICommand<Pkcs12Options, Pkcs12Input> _pkcsS12Command;
-        private ICommand<ReqOptions, ReqInput> _reqCommand;
+        private readonly ICommand<Pkcs12Options, Pkcs12Input> _pkcsS12Command;
+        private readonly ICommand<ReqOptions, ReqInput> _reqCommand;
 
         public OpenSSLEngine(ICommand<Pkcs12Options, Pkcs12Input> pkcsS12Command, ICommand<ReqOptions, ReqInput> reqCommand)
         {
