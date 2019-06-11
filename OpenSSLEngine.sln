@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{51A4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{38EFF579-2D73-41CC-96BF-F8399E135C91}"
 	ProjectSection(SolutionItems) = preProject
-		Usage.md = Usage.md
+		docs\Usage.md = docs\Usage.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D2CBCE91-9B9D-4AEA-A22A-DBB928A12B4A}"
