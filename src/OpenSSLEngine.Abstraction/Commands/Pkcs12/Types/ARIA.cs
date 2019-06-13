@@ -1,4 +1,4 @@
-﻿namespace OpenSSLEngine.Abstraction.Commands.Pkcs12
+﻿namespace OpenSSLEngine.Abstraction.Commands.Pkcs12.Types
 {
     public enum ARIA
     {

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OpenSSLEngine.Abstraction.Commands.Pkcs12.Properties;
+using OpenSSLEngine.Abstraction.Commands.Pkcs12.Types;
+using OpenSSLEngine.Abstraction.Commands.Properties;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -76,15 +79,15 @@ namespace OpenSSLEngine.Abstraction.Commands.Pkcs12
         /// <summary>
         /// Use AES to encrypt private keys before outputting.
         /// </summary>
-        public AES? AES { get; set; } = null;
+        public AES? AES { get; set; } = default(AES?);
         /// <summary>
         /// Use ARIA to encrypt private keys before outputting.
         /// </summary>
-        public ARIA? ARIA { get; set; } = null;
+        public ARIA? ARIA { get; set; } = default(ARIA?);
         /// <summary>
         /// Use Camellia to encrypt private keys before outputting.
         /// </summary>
-        public Camellia? Camellia { get; set; } = null;
+        public Camellia? Camellia { get; set; } = default(Camellia?);
         /// <summary>
         /// Don't encrypt the private keys at all.
         /// </summary>
@@ -208,9 +211,9 @@ namespace OpenSSLEngine.Abstraction.Commands.Pkcs12
             var sb = new StringBuilder();
             sb.Append("pkcs12");
 
-            foreach (var (prop, alias) in this)
+            foreach (var prop in this)
             {
-                sb.Append(Pkcs12OptionFormater.Format((dynamic)prop, alias));
+                sb.Append(prop);
             }
 
             return sb.ToString();
@@ -220,52 +223,52 @@ namespace OpenSSLEngine.Abstraction.Commands.Pkcs12
         /// Returns enumerator for options
         /// </summary>
         /// <returns></returns>
-        public IEnumerator<Tuple<object, string>> GetEnumerator()
+        public IEnumerator<ICommandProperty> GetEnumerator()
         {
-            yield return new Tuple<object, string>(this.In, "-in");
-            yield return new Tuple<object, string>(this.Out, "-out");
-            yield return new Tuple<object, string>(this.PassIn, "-passin");
-            yield return new Tuple<object, string>(this.PassOut, "-passout");
-            yield return new Tuple<object, string>(this.Password, "-password");
-            yield return new Tuple<object, string>(this.NoOut, "-noout");
-            yield return new Tuple<object, string>(this.ClCerts, "-clcerts");
-            yield return new Tuple<object, string>(this.CaCerts, "-cacerts");
-            yield return new Tuple<object, string>(this.NoCerts, "-nocerts");
-            yield return new Tuple<object, string>(this.NoKeys, "-nokeys");
-            yield return new Tuple<object, string>(this.Info, "-info");
-            yield return new Tuple<object, string>(this.Des, "-des");
-            yield return new Tuple<object, string>(this.Des3, "-des3");
-            yield return new Tuple<object, string>(this.Idea, "-idea");
-            yield return new Tuple<object, string>(this.AES, "-");
-            yield return new Tuple<object, string>(this.ARIA, "-");
-            yield return new Tuple<object, string>(this.Camellia, "-");
-            yield return new Tuple<object, string>(this.Nodes, "-nodes");
-            yield return new Tuple<object, string>(this.NoMACVer, "-nomacver");
-            yield return new Tuple<object, string>(this.TwoPass, "-twopass");
-            yield return new Tuple<object, string>(this.Export, "-export");
-            yield return new Tuple<object, string>(this.InKey, "-inkey");
-            yield return new Tuple<object, string>(this.Name, "-name");
-            yield return new Tuple<object, string>(this.CertFile, "-certfile");
-            yield return new Tuple<object, string>(this.CaName, "-caname");
-            yield return new Tuple<object, string>(this.Pass, "-pass");
-            yield return new Tuple<object, string>(this.Chain, "-chain");
-            yield return new Tuple<object, string>(this.DesCert, "-descert");
-            yield return new Tuple<object, string>(this.KeyPBE, "-keypbe");
-            yield return new Tuple<object, string>(this.CertPBE, "-certpbe");
-            yield return new Tuple<object, string>(this.KeyEx, "-keyex");
-            yield return new Tuple<object, string>(this.KeySig, "-keysig");
-            yield return new Tuple<object, string>(this.MACAlg, "-macalg");
-            yield return new Tuple<object, string>(this.NoMACIter, "-nomaciter");
-            yield return new Tuple<object, string>(this.NoIter, "-noiter");
-            yield return new Tuple<object, string>(this.MACIter, "-maciter");
-            yield return new Tuple<object, string>(this.NoMAC, "-nomac");
-            yield return new Tuple<object, string>(this.Rand, "-rand");
-            yield return new Tuple<object, string>(this.WriteRand, "-writerand");
-            yield return new Tuple<object, string>(this.CAFile, "-CAfile");
-            yield return new Tuple<object, string>(this.CAPath, "-CApath");
-            yield return new Tuple<object, string>(this.NoCAFile, "-no-CAfile");
-            yield return new Tuple<object, string>(this.NoCAPath, "-no-CApath");
-            yield return new Tuple<object, string>(this.CSP, "-CSP");
+            yield return new StringProperty(this.In, "-in");
+            yield return new StringProperty(this.Out, "-out");
+            yield return new StringProperty(this.PassIn, "-passin");
+            yield return new StringProperty(this.PassOut, "-passout");
+            yield return new StringProperty(this.Password, "-password");
+            yield return new BoolProperty(this.NoOut, "-noout");
+            yield return new BoolProperty(this.ClCerts, "-clcerts");
+            yield return new BoolProperty(this.CaCerts, "-cacerts");
+            yield return new BoolProperty(this.NoCerts, "-nocerts");
+            yield return new BoolProperty(this.NoKeys, "-nokeys");
+            yield return new BoolProperty(this.Info, "-info");
+            yield return new BoolProperty(this.Des, "-des");
+            yield return new BoolProperty(this.Des3, "-des3");
+            yield return new BoolProperty(this.Idea, "-idea");
+            yield return new NullableAESProperty(this.AES, "-");
+            yield return new NullableARIAProperty(this.ARIA, "-");
+            yield return new NullableCamelliaProperty(this.Camellia, "-");
+            yield return new BoolProperty(this.Nodes, "-nodes");
+            yield return new BoolProperty(this.NoMACVer, "-nomacver");
+            yield return new BoolProperty(this.TwoPass, "-twopass");
+            yield return new BoolProperty(this.Export, "-export");
+            yield return new StringProperty(this.InKey, "-inkey");
+            yield return new StringProperty(this.Name, "-name");
+            yield return new StringProperty(this.CertFile, "-certfile");
+            yield return new StringProperty(this.CaName, "-caname");
+            yield return new StringProperty(this.Pass, "-pass");
+            yield return new BoolProperty(this.Chain, "-chain");
+            yield return new BoolProperty(this.DesCert, "-descert");
+            yield return new StringProperty(this.KeyPBE, "-keypbe");
+            yield return new StringProperty(this.CertPBE, "-certpbe");
+            yield return new BoolProperty(this.KeyEx, "-keyex");
+            yield return new BoolProperty(this.KeySig, "-keysig");
+            yield return new StringProperty(this.MACAlg, "-macalg");
+            yield return new BoolProperty(this.NoMACIter, "-nomaciter");
+            yield return new BoolProperty(this.NoIter, "-noiter");
+            yield return new BoolProperty(this.MACIter, "-maciter");
+            yield return new BoolProperty(this.NoMAC, "-nomac");
+            yield return new StringProperty(this.Rand, "-rand");
+            yield return new StringProperty(this.WriteRand, "-writerand");
+            yield return new StringProperty(this.CAFile, "-CAfile");
+            yield return new StringProperty(this.CAPath, "-CApath");
+            yield return new BoolProperty(this.NoCAFile, "-no-CAfile");
+            yield return new BoolProperty(this.NoCAPath, "-no-CApath");
+            yield return new StringProperty(this.CSP, "-CSP");
         }
 
         IEnumerator IEnumerable.GetEnumerator()

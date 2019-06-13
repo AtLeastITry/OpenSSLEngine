@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OpenSSLEngine.Abstraction.Commands.Properties;
+using OpenSSLEngine.Abstraction.Commands.Req.Properties;
+using OpenSSLEngine.Abstraction.Commands.Req.Types;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -168,9 +171,9 @@ namespace OpenSSLEngine.Abstraction.Commands.Req
             var sb = new StringBuilder();
             sb.Append("req");
 
-            foreach (var (prop, alias) in this)
+            foreach (var prop in this)
             {
-                sb.Append(ReqOptionFormatter.Format((dynamic)prop, alias));
+                sb.Append(prop);
             }
 
             return sb.ToString();
@@ -180,37 +183,37 @@ namespace OpenSSLEngine.Abstraction.Commands.Req
         /// Returns enumerator for options
         /// </summary>
         /// <returns></returns>
-        public IEnumerator<Tuple<object, string>> GetEnumerator()
+        public IEnumerator<ICommandProperty> GetEnumerator()
         {
-            yield return new Tuple<object, string>(this.InForm, "-inform");
-            yield return new Tuple<object, string>(this.OutForm, "-outform");
-            yield return new Tuple<object, string>(this.In, "-in");
-            yield return new Tuple<object, string>(this.PassIn, "-passin");
-            yield return new Tuple<object, string>(this.Out, "-out");
-            yield return new Tuple<object, string>(this.PassOut, "-passout");
-            yield return new Tuple<object, string>(this.Text, "-text");
-            yield return new Tuple<object, string>(this.Subject, "-subject");
-            yield return new Tuple<object, string>(this.PubKey, "-pubkey");
-            yield return new Tuple<object, string>(this.NoOut, "-noout");
-            yield return new Tuple<object, string>(this.Modulus, "-modulus");
-            yield return new Tuple<object, string>(this.Verify, "-verify");
-            yield return new Tuple<object, string>(this.New, "-new");
-            yield return new Tuple<object, string>(this.Subj, "-subj");
-            yield return new Tuple<object, string>(this.Rand, "-rand");
-            yield return new Tuple<object, string>(this.WriteRand, "-writerand");
-            yield return new Tuple<object, string>(this.NewKey, "-newkey");
-            yield return new Tuple<object, string>(this.PKeyOpt, "-pkeyopt");
-            yield return new Tuple<object, string>(this.Key, "-key");
-            yield return new Tuple<object, string>(this.KeyForm, "-keyform");
-            yield return new Tuple<object, string>(this.KeyOut, "-keyout");
-            yield return new Tuple<object, string>(this.Nodes, "-nodes");
-            yield return new Tuple<object, string>(this.Digest, "-digest");
-            yield return new Tuple<object, string>(this.Config, "-config");
-            yield return new Tuple<object, string>(this.MultiValueRdn, "-multivalue-rdn");
-            yield return new Tuple<object, string>(this.X509, "-x509");
-            yield return new Tuple<object, string>(this.Days, "-days");
-            yield return new Tuple<object, string>(this.SetSerial, "-set_serial");
-            yield return new Tuple<object, string>(this.AddExt, "-addext");
+            yield return new NullableFormProperty(this.InForm, "-inform");
+            yield return new NullableFormProperty(this.OutForm, "-outform");
+            yield return new StringProperty(this.In, "-in");
+            yield return new StringProperty(this.PassIn, "-passin");
+            yield return new StringProperty(this.Out, "-out");
+            yield return new StringProperty(this.PassOut, "-passout");
+            yield return new BoolProperty(this.Text, "-text");
+            yield return new BoolProperty(this.Subject, "-subject");
+            yield return new BoolProperty(this.PubKey, "-pubkey");
+            yield return new BoolProperty(this.NoOut, "-noout");
+            yield return new BoolProperty(this.Modulus, "-modulus");
+            yield return new BoolProperty(this.Verify, "-verify");
+            yield return new BoolProperty(this.New, "-new");
+            yield return new StringProperty(this.Subj, "-subj");
+            yield return new StringProperty(this.Rand, "-rand");
+            yield return new StringProperty(this.WriteRand, "-writerand");
+            yield return new StringProperty(this.NewKey, "-newkey");
+            yield return new StringProperty(this.PKeyOpt, "-pkeyopt");
+            yield return new StringProperty(this.Key, "-key");
+            yield return new NullableFormProperty(this.KeyForm, "-keyform");
+            yield return new StringProperty(this.KeyOut, "-keyout");
+            yield return new BoolProperty(this.Nodes, "-nodes");
+            yield return new BoolProperty(this.Digest, "-digest");
+            yield return new StringProperty(this.Config, "-config");
+            yield return new BoolProperty(this.MultiValueRdn, "-multivalue-rdn");
+            yield return new BoolProperty(this.X509, "-x509");
+            yield return new IntProperty(this.Days, "-days");
+            yield return new NullableIntProperty(this.SetSerial, "-set_serial");
+            yield return new NullableIntProperty(this.AddExt, "-addext");
         }
 
         IEnumerator IEnumerable.GetEnumerator()

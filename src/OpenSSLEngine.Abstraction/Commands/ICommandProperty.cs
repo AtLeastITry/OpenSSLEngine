@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace OpenSSLEngine.Abstraction.Commands
 {
-    public interface ICommandOptions: IEnumerable<ICommandProperty>
+    public interface ICommandProperty
     {
     }
 }

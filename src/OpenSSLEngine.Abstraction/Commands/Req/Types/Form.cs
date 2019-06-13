@@ -1,4 +1,4 @@
-﻿namespace OpenSSLEngine.Abstraction.Commands.Req
+﻿namespace OpenSSLEngine.Abstraction.Commands.Req.Types
 {
     public enum Form
     {

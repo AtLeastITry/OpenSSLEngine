@@ -11,7 +11,7 @@ namespace OpenSSLEngine.Domain
         where TOptions : ICommandOptions
         where TInput : ICommandInput
     {
-        private readonly IOpenSSLPathProvider _openSSLPathProvider;
+        protected readonly IOpenSSLPathProvider _openSSLPathProvider;
         private readonly IOpenSSLResourceExtractor _openSSLResourceExtractor;
 
         public OpenSSLCommand(IOpenSSLPathProvider openSSLPathProvider, IOpenSSLResourceExtractor openSSLResourceExtractor)
@@ -74,7 +74,7 @@ namespace OpenSSLEngine.Domain
         {
             using (var process = Process.Start(this.BuildProcessInfo()))
             {
-                process.StandardInput.WriteLine($"{options} -config {_openSSLPathProvider.GetOpenSSLConfigPath()}");
+                process.StandardInput.WriteLine(BuildCommand(options));
 
                 foreach (var item in input)
                 {
@@ -91,7 +91,7 @@ namespace OpenSSLEngine.Domain
         {
             using (var process = Process.Start(this.BuildProcessInfo()))
             {
-                process.StandardInput.WriteLine($"{options} -config {_openSSLPathProvider.GetOpenSSLConfigPath()}");
+                process.StandardInput.WriteLine(BuildCommand(options));
 
                 foreach (var item in input)
                 {
@@ -102,6 +102,11 @@ namespace OpenSSLEngine.Domain
                 await WaitForUserInputAsync(process);
                 process.StandardInput.WriteLine("exit");
             }
+        }
+
+        protected virtual string BuildCommand(TOptions options)
+        {
+            return $"{options}";
         }
     }
 }
