@@ -6,16 +6,16 @@ namespace OpenSSLEngine.Core
 {
     public class OpenSSLEngineFactory
     {
-        private static Lazy<IOpenSSLEngine> _func;
+        private static Func<IOpenSSLEngine> _func;
 
         public static IOpenSSLEngine Create()
         {
-            return _func.Value;
+            return _func.Invoke();
         }
 
         internal static void Initialize(Func<IOpenSSLEngine> createFunc)
         {
-            _func = new Lazy<IOpenSSLEngine>(createFunc, LazyThreadSafetyMode.ExecutionAndPublication);
+            _func = createFunc;
         }
     }
 }

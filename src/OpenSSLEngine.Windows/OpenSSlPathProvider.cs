@@ -1,19 +1,17 @@
 ﻿using OpenSSLEngine.Abstraction;
-using System.IO;
-using System.Reflection;
 
 namespace OpenSSLEngine.Windows
 {
     internal class OpenSSlPathProvider : IOpenSSLPathProvider
     {
-        public string GetOpenSSLConfigPath()
+        public string GetOpenSSLConfigPath(string path)
         {
-            return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\lib\openssl.cfg";
+            return $@"{path}\lib\openssl.cfg";
         }
 
-        public string GetOpenSSLStartPath()
+        public string GetOpenSSLStartPath(string path)
         {
-            return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\lib\openssl.exe";
+            return $@"{path}\lib\openssl.exe";
         }
     }
 }

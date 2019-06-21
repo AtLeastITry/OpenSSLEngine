@@ -2,6 +2,6 @@
 {
     public interface IOpenSSLResourceExtractor
     {
-        void Extract();
+        void Extract(string path);
     }
 }

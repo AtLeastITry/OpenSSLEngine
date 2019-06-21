@@ -5,7 +5,7 @@ namespace OpenSSLEngine.Linux
 {
     internal class OpenSSLResourceExtractor : IOpenSSLResourceExtractor
     {
-        public void Extract()
+        public void Extract(string path)
         {
             throw new NotImplementedException();
         }

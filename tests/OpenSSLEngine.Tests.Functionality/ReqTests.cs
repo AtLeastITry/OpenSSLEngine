@@ -69,5 +69,16 @@ namespace OpenSSLEngine.Tests.Functionality
 
             Assert.True(File.Exists(keyFilePath) && File.Exists(cerFilePath));
         }
+
+        [Fact]
+        public async Task Parallel_Without_Conflict_Async()
+        {
+            await Task.WhenAll(
+                Files_Are_Created_Async(),
+                Files_Are_Created_Async(),
+                Files_Are_Created_Async(),
+                Files_Are_Created_Async()
+            );
+        }
     }
 }

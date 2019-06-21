@@ -9,9 +9,9 @@ namespace OpenSSLEngine.Domain
         {
         }
 
-        protected override string BuildCommand(ReqOptions options)
+        protected override string BuildCommand(string path, ReqOptions options)
         {
-            return $"{options} -config {_openSSLPathProvider.GetOpenSSLConfigPath()}";
+            return $"{options} -config {_openSSLPathProvider.GetOpenSSLConfigPath(path)}";
         }
     }
 }
