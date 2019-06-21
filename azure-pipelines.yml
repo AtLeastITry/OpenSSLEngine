@@ -1,0 +1,102 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '2.2.300'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: 'restore'
+    projects: | 
+      src/OpenSSLEngine.Abstraction/OpenSSLEngine.Abstraction.csproj
+        src/OpenSSLEngine.Core/OpenSSLEngine.Core.csproj
+        src/OpenSSLEngine.Domain/OpenSSLEngine.Domain.csproj
+        src/OpenSSLEngine.Linux/OpenSSLEngine.Linux.csproj
+        src/OpenSSLEngine.OSX/OpenSSLEngine.OSX.csproj
+        src/OpenSSLEngine.Windows/OpenSSLEngine.Windows.csproj
+    verbosityRestore: 'Quiet'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    command: 'build'
+    projects: | 
+      src/OpenSSLEngine.Abstraction/OpenSSLEngine.Abstraction.csproj
+        src/OpenSSLEngine.Core/OpenSSLEngine.Core.csproj
+        src/OpenSSLEngine.Domain/OpenSSLEngine.Domain.csproj
+        src/OpenSSLEngine.Linux/OpenSSLEngine.Linux.csproj
+        src/OpenSSLEngine.OSX/OpenSSLEngine.OSX.csproj
+        src/OpenSSLEngine.Windows/OpenSSLEngine.Windows.csproj
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack Abstraction'
+  inputs:
+    command: 'pack'
+    packagesToPack: 'src/OpenSSLEngine.Abstraction/OpenSSLEngine.Abstraction.csproj'
+    versioningScheme: 'off'
+    verbosityPack: 'Quiet'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack Core'
+  inputs:
+    command: 'pack'
+    packagesToPack: 'src/OpenSSLEngine.Core/OpenSSLEngine.Core.csproj'
+    versioningScheme: 'off'
+    verbosityPack: 'Quiet'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack Domain'
+  inputs:
+    command: 'pack'
+    packagesToPack: 'src/OpenSSLEngine.Domain/OpenSSLEngine.Domain.csproj'
+    versioningScheme: 'off'
+    verbosityPack: 'Quiet'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack Linux'
+  inputs:
+    command: 'pack'
+    packagesToPack: 'src/OpenSSLEngine.Linux/OpenSSLEngine.Linux.csproj'
+    versioningScheme: 'off'
+    verbosityPack: 'Quiet'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack OSX'
+  inputs:
+    command: 'pack'
+    packagesToPack: 'src/OpenSSLEngine.OSX/OpenSSLEngine.OSX.csproj'
+    versioningScheme: 'off'
+    verbosityPack: 'Quiet'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack Windows'
+  inputs:
+    command: 'pack'
+    packagesToPack: 'src/OpenSSLEngine.Windows/OpenSSLEngine.Windows.csproj'
+    versioningScheme: 'off'
+    verbosityPack: 'Quiet'
+
+- task: NuGetCommand@2
+  displayName: 'nuget push'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'OpenSSlEngine'
