@@ -106,9 +106,11 @@ steps:
     vsTestVersion: '16.0'
     runInParallel: false
     rerunFailedTests: false
+    runTestsInIsolation: true
 
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
