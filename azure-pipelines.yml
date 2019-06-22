@@ -20,18 +20,22 @@ steps:
     packageType: 'sdk'
     version: '2.2.300'
 
+
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
     command: 'restore'
-    projects: | 
+    projects: |       
       src/OpenSSLEngine.Abstraction/OpenSSLEngine.Abstraction.csproj
         src/OpenSSLEngine.Core/OpenSSLEngine.Core.csproj
         src/OpenSSLEngine.Domain/OpenSSLEngine.Domain.csproj
         src/OpenSSLEngine.Linux/OpenSSLEngine.Linux.csproj
         src/OpenSSLEngine.OSX/OpenSSLEngine.OSX.csproj
         src/OpenSSLEngine.Windows/OpenSSLEngine.Windows.csproj
+        tests/OpenSSLEngine.Tests.Functionality/OpenSSLEngine.Tests.Functionality.csproj
     verbosityRestore: 'Quiet'
+
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
@@ -44,6 +48,8 @@ steps:
         src/OpenSSLEngine.Linux/OpenSSLEngine.Linux.csproj
         src/OpenSSLEngine.OSX/OpenSSLEngine.OSX.csproj
         src/OpenSSLEngine.Windows/OpenSSLEngine.Windows.csproj
+        tests/OpenSSLEngine.Tests.Functionality/OpenSSLEngine.Tests.Functionality.csproj
+    arguments: '-c $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack Abstraction'
@@ -93,10 +99,18 @@ steps:
     versioningScheme: 'off'
     verbosityPack: 'Quiet'
 
-- task: NuGetCommand@2
-  displayName: 'nuget push'
+- task: VSTest@2
+  displayName: 'dotnet run tests'
   inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'external'
-    publishFeedCredentials: 'OpenSSlEngine'
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: 'tests\OpenSSLEngine.Tests.Functionality\bin\$(BuildConfiguration)\netcoreapp2.2\OpenSSLEngine.Tests.Functionality.dll'
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    vsTestVersion: '16.0'
+    runInParallel: true
+    rerunFailedTests: false
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
