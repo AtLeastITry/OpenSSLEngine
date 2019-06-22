@@ -22,8 +22,7 @@ namespace OpenSSLEngine.Windows
 
         private static IEnumerable<ServiceDescriptor> GetWindowsServices()
         {
-            yield return ServiceDescriptor.Singleton<IOpenSSLPathProvider, OpenSSlPathProvider>();
-            yield return ServiceDescriptor.Singleton<IOpenSSLResourceExtractor, OpenSSLResourceExtractor>();
+            yield return ServiceDescriptor.Singleton<IOpenSSLResourceHandler, OpenSSLResourceHandler>();
         }
     }
 }

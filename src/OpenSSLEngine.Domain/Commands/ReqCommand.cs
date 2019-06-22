@@ -5,13 +5,13 @@ namespace OpenSSLEngine.Domain
 {
     public class ReqCommand : OpenSSLCommand<ReqOptions, ReqInput>
     {
-        public ReqCommand(IOpenSSLPathProvider openSSLPathProvider, IOpenSSLResourceExtractor openSSLResourceExtractor) : base(openSSLPathProvider, openSSLResourceExtractor)
+        public ReqCommand(IOpenSSLResourceHandler openSSLResourceHandler) : base(openSSLResourceHandler)
         {
         }
 
-        protected override string BuildCommand(string path, ReqOptions options)
+        protected override string BuildCommand(ReqOptions options)
         {
-            return $"{options} -config {_openSSLPathProvider.GetOpenSSLConfigPath(path)}";
+            return $"{options} -config {_openSSLResourceHandler.GetOpenSSLConfigPath()}";
         }
     }
 }

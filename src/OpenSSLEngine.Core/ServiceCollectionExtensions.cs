@@ -9,7 +9,7 @@ namespace OpenSSLEngine.Core
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddOpenSSl(this IServiceCollection source)
+        public static IServiceCollection AddOpenSSl(this IServiceCollection source, Action<OpenSSLEngineOptions> options = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -17,6 +17,12 @@ namespace OpenSSLEngine.Core
             source.AddOpenSSlDomain();
 
             source.TryAdd(GetServices());
+
+
+            source.Configure(
+                options ?? 
+                new Action<OpenSSLEngineOptions>(o => o.EnableParallelExecution = false)
+            );
 
             OpenSSLEngineFactory.Initialize(() => source.BuildServiceProvider().GetService<IOpenSSLEngine>());
 

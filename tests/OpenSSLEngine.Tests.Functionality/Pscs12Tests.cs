@@ -94,16 +94,5 @@ namespace OpenSSLEngine.Tests.Functionality
 
             Assert.True(File.Exists(pfxFilePath));
         }
-
-        [Fact]
-        public async Task Parallel_Without_Conflict_Async()
-        {
-            await Task.WhenAll(
-                File_Created_Async(),
-                File_Created_Async(),
-                File_Created_Async(),
-                File_Created_Async()
-            );
-        }
     }
 }

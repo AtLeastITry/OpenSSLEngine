@@ -20,8 +20,6 @@ steps:
     packageType: 'sdk'
     version: '2.2.300'
 
-
-
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
@@ -106,7 +104,7 @@ steps:
     testAssemblyVer2: 'tests\OpenSSLEngine.Tests.Functionality\bin\$(BuildConfiguration)\netcoreapp2.2\OpenSSLEngine.Tests.Functionality.dll'
     searchFolder: '$(System.DefaultWorkingDirectory)'
     vsTestVersion: '16.0'
-    runInParallel: true
+    runInParallel: false
     rerunFailedTests: false
 
 - task: PublishBuildArtifacts@1

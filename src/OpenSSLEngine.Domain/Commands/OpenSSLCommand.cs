@@ -14,23 +14,19 @@ namespace OpenSSLEngine.Domain
         where TOptions : ICommandOptions
         where TInput : ICommandInput
     {
-        protected readonly IOpenSSLPathProvider _openSSLPathProvider;
-        private readonly IOpenSSLResourceExtractor _openSSLResourceExtractor;
+        protected readonly IOpenSSLResourceHandler _openSSLResourceHandler;
 
-        public OpenSSLCommand(IOpenSSLPathProvider openSSLPathProvider, IOpenSSLResourceExtractor openSSLResourceExtractor)
+        public OpenSSLCommand(IOpenSSLResourceHandler openSSLResourceHandler)
         {
-            if (openSSLPathProvider == null)
-                throw new ArgumentNullException(nameof(openSSLPathProvider));
-            if (openSSLResourceExtractor == null)
-                throw new ArgumentNullException(nameof(openSSLResourceExtractor));
+            if (openSSLResourceHandler == null)
+                throw new ArgumentNullException(nameof(openSSLResourceHandler));
 
-            _openSSLPathProvider = openSSLPathProvider;
-            _openSSLResourceExtractor = openSSLResourceExtractor;
+            _openSSLResourceHandler = openSSLResourceHandler;
         }
 
-        private TempProcess BuildProcess(string path)
+        private TempProcess BuildProcess()
         {
-            return new TempProcess(path, _openSSLPathProvider, _openSSLResourceExtractor);
+            return new TempProcess(_openSSLResourceHandler);
         }
 
         private static Task WaitForUserInputAsync(TempProcess process)
@@ -64,11 +60,9 @@ namespace OpenSSLEngine.Domain
 
         public void Execute(TOptions options, TInput input)
         {
-            var tempPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Guid.NewGuid().ToString());
-
-            using (var process = BuildProcess(tempPath))
+            using (var process = BuildProcess())
             {
-                process.StandardInput.WriteLine(BuildCommand(tempPath, options));
+                process.StandardInput.WriteLine(BuildCommand(options));
 
                 foreach (var item in input)
                 {
@@ -83,11 +77,9 @@ namespace OpenSSLEngine.Domain
 
         public async Task ExecuteAsync(TOptions options, TInput input)
         {
-            var tempPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Guid.NewGuid().ToString());
-
-            using (var process = BuildProcess(tempPath))
+            using (var process = BuildProcess())
             {
-                process.StandardInput.WriteLine(BuildCommand(tempPath, options));
+                process.StandardInput.WriteLine(BuildCommand(options));
 
                 foreach (var item in input)
                 {
@@ -100,7 +92,7 @@ namespace OpenSSLEngine.Domain
             }
         }
 
-        protected virtual string BuildCommand(string path, TOptions options)
+        protected virtual string BuildCommand(TOptions options)
         {
             return $"{options}";
         }

@@ -8,15 +8,13 @@ namespace OpenSSLEngine.Domain.Commands
     internal class TempProcess : IDisposable
     {
         private readonly Process _process;
-        private readonly string _path;
+        private readonly IOpenSSLResourceHandler _openSSLResourceHandler;
 
-        public TempProcess(string path, IOpenSSLPathProvider openSSLPathProvider, IOpenSSLResourceExtractor openSSLResourceExtractor)
+        public TempProcess(IOpenSSLResourceHandler openSSLResourceHandler)
         {
-            _path = path;
+            _openSSLResourceHandler = openSSLResourceHandler;
 
-            Directory.CreateDirectory(_path);
-
-            openSSLResourceExtractor.Extract(_path);
+            _openSSLResourceHandler.Extract();
 
             var processInfo = new ProcessStartInfo()
             {
@@ -26,7 +24,7 @@ namespace OpenSSLEngine.Domain.Commands
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
-                FileName = openSSLPathProvider.GetOpenSSLStartPath(_path)
+                FileName = _openSSLResourceHandler.GetOpenSSLStartPath()
             };
 
             _process = Process.Start(processInfo);
@@ -38,7 +36,7 @@ namespace OpenSSLEngine.Domain.Commands
         {
             _process.Dispose();
 
-            Directory.Delete(_path, true);
+            _openSSLResourceHandler.Clean();
         }
     }
 }
