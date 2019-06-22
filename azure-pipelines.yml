@@ -104,9 +104,8 @@ steps:
     testAssemblyVer2: 'tests\OpenSSLEngine.Tests.Functionality\bin\$(BuildConfiguration)\netcoreapp2.2\OpenSSLEngine.Tests.Functionality.dll'
     searchFolder: '$(System.DefaultWorkingDirectory)'
     vsTestVersion: '16.0'
-    runInParallel: false
+    runInParallel: true
     rerunFailedTests: false
-    runTestsInIsolation: true
 
 - task: PublishBuildArtifacts@1
   inputs:
