@@ -4,6 +4,7 @@ using OpenSSLEngine.Abstraction;
 using OpenSSLEngine.Domain;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace OpenSSLEngine.Core
 {

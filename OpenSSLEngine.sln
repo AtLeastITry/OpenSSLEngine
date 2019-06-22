@@ -30,13 +30,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D2CBCE91-9B9D-4AEA-A22A-DBB928A12B4A}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		azure-pipelines.yml = azure-pipelines.yml
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pkcs12Sample", "samples\Pkcs12Sample\Pkcs12Sample.csproj", "{BEEAA75A-9B5E-43C3-8889-475698BAED8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pkcs12Sample", "samples\Pkcs12Sample\Pkcs12Sample.csproj", "{BEEAA75A-9B5E-43C3-8889-475698BAED8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReqSample", "samples\ReqSample\ReqSample.csproj", "{3592EDCC-639B-455D-8539-372A46B1A1E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReqSample", "samples\ReqSample\ReqSample.csproj", "{3592EDCC-639B-455D-8539-372A46B1A1E1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenSSLEngine.Tests.Functionality", "tests\OpenSSLEngine.Tests.Functionality\OpenSSLEngine.Tests.Functionality.csproj", "{3227014B-3E40-4184-90BC-EAA72D38CCB2}"
 EndProject

@@ -11,7 +11,11 @@ namespace OpenSSLEngine.Tests.Functionality
         public BaseTest()
         {
             var services = new ServiceCollection();
-            services.AddOpenSSl();
+            services.AddOpenSSl(options => 
+            {
+                options.EnableParallelExecution = true;
+                options.DeleteDirectory = false;
+            });
             var serviceProvider = services.BuildServiceProvider();
             _engine = serviceProvider.GetRequiredService<IOpenSSLEngine>();
         }

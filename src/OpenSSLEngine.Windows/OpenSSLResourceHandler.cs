@@ -93,7 +93,7 @@ namespace OpenSSLEngine.Windows
 
         public void Clean()
         {
-            if (_options.EnableParallelExecution)
+            if (_options.EnableParallelExecution && _options.DeleteDirectory)
                 Directory.Delete(_path, true);
         }
     }
