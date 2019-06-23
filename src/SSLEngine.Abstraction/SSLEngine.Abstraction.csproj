@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\Git\SSLEngine\SSLEngine.Abstraction\SSLEngine.Abstraction.xml</DocumentationFile>
+    <DocumentationFile>D:\Git\SSLEngine\src\SSLEngine.Abstraction\SSLEngine.Abstraction.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
