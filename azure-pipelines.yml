@@ -25,13 +25,13 @@ steps:
   inputs:
     command: 'restore'
     projects: |       
-      src/OpenSSLEngine.Abstraction/OpenSSLEngine.Abstraction.csproj
-        src/OpenSSLEngine.Core/OpenSSLEngine.Core.csproj
-        src/OpenSSLEngine.Domain/OpenSSLEngine.Domain.csproj
-        src/OpenSSLEngine.Linux/OpenSSLEngine.Linux.csproj
-        src/OpenSSLEngine.OSX/OpenSSLEngine.OSX.csproj
-        src/OpenSSLEngine.Windows/OpenSSLEngine.Windows.csproj
-        tests/OpenSSLEngine.Tests.Functionality/OpenSSLEngine.Tests.Functionality.csproj
+      src/SSLEngine.Abstraction/SSLEngine.Abstraction.csproj
+        src/SSLEngine.Core/SSLEngine.Core.csproj
+        src/SSLEngine.Domain/SSLEngine.Domain.csproj
+        src/SSLEngine.Linux/SSLEngine.Linux.csproj
+        src/SSLEngine.OSX/SSLEngine.OSX.csproj
+        src/SSLEngine.Windows/SSLEngine.Windows.csproj
+        tests/SSLEngine.Tests.Functionality/SSLEngine.Tests.Functionality.csproj
     verbosityRestore: 'Quiet'
 
 
@@ -40,20 +40,20 @@ steps:
   inputs:
     command: 'build'
     projects: | 
-      src/OpenSSLEngine.Abstraction/OpenSSLEngine.Abstraction.csproj
-        src/OpenSSLEngine.Core/OpenSSLEngine.Core.csproj
-        src/OpenSSLEngine.Domain/OpenSSLEngine.Domain.csproj
-        src/OpenSSLEngine.Linux/OpenSSLEngine.Linux.csproj
-        src/OpenSSLEngine.OSX/OpenSSLEngine.OSX.csproj
-        src/OpenSSLEngine.Windows/OpenSSLEngine.Windows.csproj
-        tests/OpenSSLEngine.Tests.Functionality/OpenSSLEngine.Tests.Functionality.csproj
+      src/SSLEngine.Abstraction/SSLEngine.Abstraction.csproj
+        src/SSLEngine.Core/SSLEngine.Core.csproj
+        src/SSLEngine.Domain/SSLEngine.Domain.csproj
+        src/SSLEngine.Linux/SSLEngine.Linux.csproj
+        src/SSLEngine.OSX/SSLEngine.OSX.csproj
+        src/SSLEngine.Windows/SSLEngine.Windows.csproj
+        tests/SSLEngine.Tests.Functionality/SSLEngine.Tests.Functionality.csproj
     arguments: '-c $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack Abstraction'
   inputs:
     command: 'pack'
-    packagesToPack: 'src/OpenSSLEngine.Abstraction/OpenSSLEngine.Abstraction.csproj'
+    packagesToPack: 'src/SSLEngine.Abstraction/SSLEngine.Abstraction.csproj'
     versioningScheme: 'off'
     verbosityPack: 'Quiet'
 
@@ -61,7 +61,7 @@ steps:
   displayName: 'dotnet pack Core'
   inputs:
     command: 'pack'
-    packagesToPack: 'src/OpenSSLEngine.Core/OpenSSLEngine.Core.csproj'
+    packagesToPack: 'src/SSLEngine.Core/SSLEngine.Core.csproj'
     versioningScheme: 'off'
     verbosityPack: 'Quiet'
 
@@ -69,7 +69,7 @@ steps:
   displayName: 'dotnet pack Domain'
   inputs:
     command: 'pack'
-    packagesToPack: 'src/OpenSSLEngine.Domain/OpenSSLEngine.Domain.csproj'
+    packagesToPack: 'src/SSLEngine.Domain/SSLEngine.Domain.csproj'
     versioningScheme: 'off'
     verbosityPack: 'Quiet'
 
@@ -77,7 +77,7 @@ steps:
   displayName: 'dotnet pack Linux'
   inputs:
     command: 'pack'
-    packagesToPack: 'src/OpenSSLEngine.Linux/OpenSSLEngine.Linux.csproj'
+    packagesToPack: 'src/SSLEngine.Linux/SSLEngine.Linux.csproj'
     versioningScheme: 'off'
     verbosityPack: 'Quiet'
 
@@ -85,7 +85,7 @@ steps:
   displayName: 'dotnet pack OSX'
   inputs:
     command: 'pack'
-    packagesToPack: 'src/OpenSSLEngine.OSX/OpenSSLEngine.OSX.csproj'
+    packagesToPack: 'src/SSLEngine.OSX/SSLEngine.OSX.csproj'
     versioningScheme: 'off'
     verbosityPack: 'Quiet'
 
@@ -93,7 +93,7 @@ steps:
   displayName: 'dotnet pack Windows'
   inputs:
     command: 'pack'
-    packagesToPack: 'src/OpenSSLEngine.Windows/OpenSSLEngine.Windows.csproj'
+    packagesToPack: 'src/SSLEngine.Windows/SSLEngine.Windows.csproj'
     versioningScheme: 'off'
     verbosityPack: 'Quiet'
 
@@ -101,7 +101,7 @@ steps:
   displayName: 'dotnet run tests'
   inputs:
     testSelector: 'testAssemblies'
-    testAssemblyVer2: 'tests\OpenSSLEngine.Tests.Functionality\bin\$(BuildConfiguration)\netcoreapp2.2\OpenSSLEngine.Tests.Functionality.dll'
+    testAssemblyVer2: 'tests\SSLEngine.Tests.Functionality\bin\$(BuildConfiguration)\netcoreapp2.2\SSLEngine.Tests.Functionality.dll'
     searchFolder: '$(System.DefaultWorkingDirectory)'
     vsTestVersion: '16.0'
     runInParallel: true

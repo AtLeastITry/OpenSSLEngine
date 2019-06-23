@@ -1,0 +1,484 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SSLEngine.Abstraction</name>
+    </assembly>
+    <members>
+        <member name="T:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options">
+            <summary>
+            Options for the pkcs12 command.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.In">
+            <summary>
+            This specifies filename of the PKCS#12 file to be parsed. 
+             Standard input is used by default.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Out">
+            <summary>
+            The filename to write certificates and private keys to, standard output by defaul
+            They are all written in PEM format.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.PassIn">
+            <summary>
+            The PKCS#12 file (i.e. input file) password source. For more information about the format of arg see the PASS PHRASE ARGUMENTS section in openssl(1).
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.PassOut">
+            <summary>
+            Pass phrase source to encrypt any outputted private keys with. For more information about the format of arg see the PASS PHRASE ARGUMENTS section in openssl(1).
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Password">
+            <summary>
+            With -export, -password is equivalent to -passout. Otherwise, -password is equivalent to -passin.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoOut">
+            <summary>
+            This option inhibits output of the keys and certificates to the output file version of the PKCS#12 file.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.ClCerts">
+            <summary>
+            Only output client certificates (not CA certificates).
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CaCerts">
+            <summary>
+            Only output CA certificates (not client certificates).
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoCerts">
+            <summary>
+            No certificates at all will be output.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoKeys">
+            <summary>
+            No private keys will be output.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Info">
+            <summary>
+            Output additional information about the PKCS#12 file structure, algorithms used and iteration counts.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Des">
+            <summary>
+            Use DES to encrypt private keys before outputting.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Des3">
+            <summary>
+            Use triple DES to encrypt private keys before outputting, this is the default.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Idea">
+            <summary>
+            Use IDEA to encrypt private keys before outputting.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.AES">
+            <summary>
+            Use AES to encrypt private keys before outputting.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.ARIA">
+            <summary>
+            Use ARIA to encrypt private keys before outputting.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Camellia">
+            <summary>
+            Use Camellia to encrypt private keys before outputting.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Nodes">
+            <summary>
+            Don't encrypt the private keys at all.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoMACVer">
+            <summary>
+            Don't attempt to verify the integrity MAC before reading the file.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.TwoPass">
+            <summary>
+            Prompt for separate integrity and encryption passwords: most software always assumes these are the same so this option will render such PKCS#12 files unreadable. Cannot be used in combination with the options -password, -passin (if importing) or -passout (if exporting).
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Export">
+            <summary>
+            This option specifies that a PKCS#12 file will be created rather than parsed.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.InKey">
+            <summary>
+            File to read private key from. If not present then a private key must be present in the input file. If no engine is used, the argument is taken as a file; if an engine is specified, the argument is given to the engine as a key identifier.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Name">
+            <summary>
+            This specifies the "friendly name" for the certificate and private key. This name is typically displayed in list boxes by software importing the file.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CertFile">
+            <summary>
+            A filename to read additional certificates from.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CaName">
+            <summary>
+            This specifies the "friendly name" for other certificates. This option may be used multiple times to specify names for all certificates in the order they appear. Netscape ignores friendly names on other certificates whereas MSIE displays them.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Pass">
+            <summary>
+            The PKCS#12 file (i.e. output file) password source. For more information about the format of arg see the PASS PHRASE ARGUMENTS section in openssl(1).
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Chain">
+            <summary>
+            If this option is present then an attempt is made to include the entire certificate chain of the user certificate. The standard CA store is used for this search. If the search fails it is considered a fatal error.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.DesCert">
+            <summary>
+            Encrypt the certificate using triple DES, this may render the PKCS#12 file unreadable by some "export grade" software. By default the private key is encrypted using triple DES and the certificate using 40 bit RC2.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.KeyPBE">
+            <summary>
+            These options allow the algorithm used to encrypt the private key and certificates to be selected. Any PKCS#5 v1.5 or PKCS#12 PBE algorithm name can be used (see NOTES section for more information). If a cipher name (as output by the list-cipher-algorithms command is specified then it is used with PKCS#5 v2.0. For interoperability reasons it is advisable to only use PKCS#12 algorithms.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CertPBE">
+            <summary>
+            These options allow the algorithm used to encrypt the private key and certificates to be selected. Any PKCS#5 v1.5 or PKCS#12 PBE algorithm name can be used (see NOTES section for more information). If a cipher name (as output by the list-cipher-algorithms command is specified then it is used with PKCS#5 v2.0. For interoperability reasons it is advisable to only use PKCS#12 algorithms.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.KeyEx">
+            <summary>
+            Specifies that the private key is to be used for key exchange or just signing. This option is only interpreted by MSIE and similar MS software. Normally "export grade" software will only allow 512 bit RSA keys to be used for encryption purposes but arbitrary length keys for signing. The -keysig option marks the key for signing only. Signing only keys can be used for S/MIME signing, authenticode (ActiveX control signing) and SSL client authentication, however due to a bug only MSIE 5.0 and later support the use of signing only keys for SSL client authentication.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.KeySig">
+            <summary>
+            Specifies that the private key is to be used for key exchange or just signing. This option is only interpreted by MSIE and similar MS software. Normally "export grade" software will only allow 512 bit RSA keys to be used for encryption purposes but arbitrary length keys for signing. The -keysig option marks the key for signing only. Signing only keys can be used for S/MIME signing, authenticode (ActiveX control signing) and SSL client authentication, however due to a bug only MSIE 5.0 and later support the use of signing only keys for SSL client authentication.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.MACAlg">
+            <summary>
+            Specify the MAC digest algorithm. If not included them SHA1 will be used.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoMACIter">
+            <summary>
+            These options affect the iteration counts on the MAC and key algorithms. Unless you wish to produce files compatible with MSIE 4.0 you should leave these options alone. To discourage attacks by using large dictionaries of common passwords the algorithm that derives keys from passwords can have an iteration count applied to it: this causes a certain part of the algorithm to be repeated and slows it down. The MAC is used to check the file integrity but since it will normally have the same password as the keys and certificates it could also be attacked.By default both MAC and encryption iteration counts are set to 2048, using these options the MAC and encryption iteration counts can be set to 1, since this reduces the file security you should not use these options unless you really have to.Most software supports both MAC and key iteration counts.MSIE 4.0 doesn't support MAC iteration counts so it needs the -nomaciter option.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoIter">
+            <summary>
+            These options affect the iteration counts on the MAC and key algorithms. Unless you wish to produce files compatible with MSIE 4.0 you should leave these options alone. To discourage attacks by using large dictionaries of common passwords the algorithm that derives keys from passwords can have an iteration count applied to it: this causes a certain part of the algorithm to be repeated and slows it down. The MAC is used to check the file integrity but since it will normally have the same password as the keys and certificates it could also be attacked.By default both MAC and encryption iteration counts are set to 2048, using these options the MAC and encryption iteration counts can be set to 1, since this reduces the file security you should not use these options unless you really have to.Most software supports both MAC and key iteration counts.MSIE 4.0 doesn't support MAC iteration counts so it needs the -nomaciter option.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.MACIter">
+            <summary>
+            This option is included for compatibility with previous versions, it used to be needed to use MAC iterations counts but they are now used by default.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoMAC">
+            <summary>
+            Don't attempt to provide the MAC integrity.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.Rand">
+            <summary>
+            A file or files containing random data used to seed the random number generator. Multiple files can be specified separated by an OS-dependent character. The separator is ; for MS-Windows, , for OpenVMS, and : for all others.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.WriteRand">
+            <summary>
+            Writes random data to the specified file upon exit. This can be used with a subsequent -rand flag.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CAFile">
+            <summary>
+            CA storage as a file.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CAPath">
+            <summary>
+            CA storage as a directory. This directory must be a standard certificate directory: that is a hash of each subject name (using x509 -hash) should be linked to each certificate.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoCAFile">
+            <summary>
+            Do not load the trusted CA certificates from the default file location.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.NoCAPath">
+            <summary>
+            Do not load the trusted CA certificates from the default directory location.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.CSP">
+            <summary>
+            Write name as a Microsoft CSP name.
+            </summary>
+        </member>
+        <member name="M:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.ToString">
+            <summary>
+            Returns string that represents the options
+            </summary>
+        </member>
+        <member name="M:SSLEngine.Abstraction.Commands.Pkcs12.Pkcs12Options.GetEnumerator">
+            <summary>
+            Returns enumerator for options
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqInput.CountryName">
+            <summary>
+            Country Name (2 letter code)
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqInput.StateOrProvinceName">
+            <summary>
+            State or Province Name (full name)
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqInput.LocalityName">
+            <summary>
+            Locality Name (eg, city)
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqInput.OrganizationName">
+            <summary>
+            Oganization Name (eg, company)
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqInput.OrganizationalUnitName">
+            <summary>
+            Organizational Unit Name (eg, section)
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqInput.CommonName">
+            <summary>
+            Common Name (e.g. server FQDN or Your name)
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqInput.EmailAddress">
+            <summary>
+            Email Address
+            </summary>
+        </member>
+        <member name="T:SSLEngine.Abstraction.Commands.Req.ReqOptions">
+            <summary>
+            Options for the req command.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.InForm">
+            <summary>
+            This specifies the input format. 
+            The DER option uses an ASN1 DER encoded form compatible with the PKCS#10. 
+            The PEM form is the default format: it consists of the DER format base64 encoded with additional header and footer lines
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.OutForm">
+            <summary>
+            This specifies the output format, the options have the same meaning as the -inform option.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.In">
+            <summary>
+            This specifies the input filename to read a request from or standard input if this option is not specified. 
+            A request is only read if the creation options (-new and -newkey) are not specified.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.PassIn">
+            <summary>
+            The input file password source. 
+            For more information about the format of arg see the PASS PHRASE ARGUMENTS section in <see href="https://www.openssl.org/docs/man1.0.2/man1/openssl.htmlm">openssl(1)</see>.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.Out">
+            <summary>
+            This specifies the output filename to write to or standard output by default.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.PassOut">
+            <summary>
+            The output file password source. For more information about the format of arg see the PASS PHRASE ARGUMENTS section in <see href="https://www.openssl.org/docs/man1.0.2/man1/openssl.htmlm">openssl(1)</see>.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.Text">
+            <summary>
+            prints out the certificate request in text form.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.Subject">
+            <summary>
+            Prints out the request subject (or certificate subject if -x509 is specified)
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.PubKey">
+            <summary>
+            Outputs the public key.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.NoOut">
+            <summary>
+            This option prevents output of the encoded version of the request.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.Modulus">
+            <summary>
+            This option prints out the value of the modulus of the public key contained in the request.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.Verify">
+            <summary>
+            Verifies the signature on the request.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.New">
+             <summary>
+             this option generates a new certificate request. 
+             It will prompt the user for the relevant field values. 
+             The actual fields prompted for and their maximum and minimum sizes are specified in the configuration file and any requested extensions.
+             
+            If the -key option is not used it will generate a new RSA private key using information specified in the configuration file.
+             </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.Subj">
+            <summary>
+            Replaces subject field of input request with specified data and outputs modified request. 
+            The arg must be formatted as /type0=value0/type1=value1/type2=..., characters may be escaped by \ (backslash), no spaces are skipped.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.Rand">
+            <summary>
+            a file or files containing random data used to seed the random number generator, or an EGD socket (see RAND_egd(3)). 
+            Multiple files can be specified separated by a OS-dependent character. The separator is ; for MS-Windows, , for OpenVMS, and : for all others.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.WriteRand">
+            <summary>
+            Writes random data to the specified file upon exit. 
+            This can be used with a subsequent -rand flag.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.NewKey">
+             <summary>
+             this option creates a new certificate request and a new private key. The argument takes one of several forms. rsa:nbits, where nbits is the number of bits, generates an RSA key nbits in size. If nbits is omitted, i.e. -newkey rsa specified, the default key size, specified in the configuration file is used.
+            
+            All other algorithms support the -newkey alg:file form, where file may be an algorithm parameter file, created by the genpkey -genparam command or and X.509 certificate for a key with approriate algorithm.
+            
+            param:file generates a key using the parameter file or certificate file, the algorithm is determined by the parameters.algname:file use algorithm algname and parameter file file: the two algorithms must match or an error occurs.algname just uses algorithm algname, and parameters, if neccessary should be specified via -pkeyopt parameter.
+            
+            dsa:filename generates a DSA key using the parameters in the file filename.ec:filename generates EC key(usable both with ECDSA or ECDH algorithms), gost2001:filename generates GOST R 34.10-2001 key(requires ccgost engine configured in the configuration file). If just gost2001 is specified a parameter set should be specified by -pkeyopt paramset:X
+             </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.PKeyOpt">
+            <summary>
+            set the public key algorithm option opt to value. 
+            The precise set of options supported depends on the public key algorithm used and its implementation. See KEY GENERATION OPTIONS in the genpkey manual page for more details.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.Key">
+            <summary>
+            This specifies the file to read the private key from. It also accepts PKCS#8 format private keys for PEM format files.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.KeyForm">
+            <summary>
+            the format of the private key file specified in the -key argument. PEM is the default.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.KeyOut">
+            <summary>
+            this gives the filename to write the newly created private key to. If this option is not specified then the filename present in the configuration file is used.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.Nodes">
+            <summary>
+            if this option is specified then if a private key is created it will not be encrypted.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.Digest">
+             <summary>
+             this specifies the message digest to sign the request with (such as -md5, -sha1). This overrides the digest algorithm specified in the configuration file.
+            
+            Some public key algorithms may override this choice.For instance, DSA signatures always use SHA1, GOST R 34.10 signatures always use GOST R 34.11-94 (-md_gost94).
+             </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.Config">
+            <summary>
+            this allows an alternative configuration file to be specified, this overrides the compile time filename or any specified in the OPENSSL_CONF environment variable.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.MultiValueRdn">
+             <summary>
+             this option causes the -subj argument to be interpreted with full support for multivalued RDNs. Example:
+            
+             /DC=org/DC=OpenSSL/DC=users/UID=123456+CN=John Doe
+            
+             If -multi-rdn is not used then the UID value is 123456+CN=John Doe.
+             </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.X509">
+             <summary>
+             this option outputs a self signed certificate instead of a certificate request. This is typically used to generate a test certificate or a self signed root CA. The extensions added to the certificate (if any) are specified in the configuration file. Unless specified using the set_serial option, a large random number will be used for the serial number.
+            
+             If existing request is specified with the -in option, it is converted to the self signed certificate otherwise new request is created.
+             </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.Days">
+            <summary>
+            when the -x509 option is being used this specifies the number of days to certify the certificate for. The default is 30 days.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.SetSerial">
+            <summary>
+            serial number to use when outputting a self signed certificate. This may be specified as a decimal value or a hex value if preceded by 0x. It is possible to use negative serial numbers but this is not recommended.
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.Commands.Req.ReqOptions.AddExt">
+            <summary>
+            Add a specific extension to the certificate(if the -x509 option is present) or certificate request.
+            The argument must have the form of a key=value pair as it would appear in a config file.
+            
+            This option can be given multiple times.
+            </summary>
+        </member>
+        <member name="M:SSLEngine.Abstraction.Commands.Req.ReqOptions.ToString">
+            <summary>
+            Returns string that represents the options
+            </summary>
+        </member>
+        <member name="M:SSLEngine.Abstraction.Commands.Req.ReqOptions.GetEnumerator">
+            <summary>
+            Returns enumerator for options
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SSLEngine.Abstraction.SSLEngineOptions">
+            <summary>
+            Additional configuration options
+            </summary>
+        </member>
+        <member name="P:SSLEngine.Abstraction.SSLEngineOptions.EnableParallelExecution">
+            <summary>
+            Allows the use of parallel execution
+            </summary>
+            /// <remarks>
+            This options invloves creating new temporary copies of required resources, i.e each call to a command will generate new temporary resource files
+            </remarks>
+        </member>
+    </members>
+</doc>

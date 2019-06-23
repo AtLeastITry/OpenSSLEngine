@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using OpenSSLEngine.Abstraction;
-using OpenSSLEngine.Abstraction.Commands.Req;
-using OpenSSLEngine.Core;
+using SSLEngine.Abstraction;
+using SSLEngine.Abstraction.Commands.Req;
+using SSLEngine.Core;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -12,11 +12,11 @@ namespace ReqSample
         static async Task Main(string[] args)
         {
             var services = new ServiceCollection();
-            services.AddOpenSSl();
+            services.AddSSl();
             var serviceProvider = services.BuildServiceProvider();
-            var openSSLEngine = serviceProvider.GetRequiredService<IOpenSSLEngine>();
+            var SSLEngine = serviceProvider.GetRequiredService<ISSLEngine>();
 
-            await openSSLEngine.ReqAsync(
+            await SSLEngine.ReqAsync(
                 options: new ReqOptions
                 {
                     NewKey = "rsa:2048",

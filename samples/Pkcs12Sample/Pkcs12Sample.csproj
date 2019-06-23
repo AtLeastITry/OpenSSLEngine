@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\OpenSSLEngine.Abstraction\OpenSSLEngine.Abstraction.csproj" />
-    <ProjectReference Include="..\..\src\OpenSSLEngine.Core\OpenSSLEngine.Core.csproj" />
+    <ProjectReference Include="..\..\src\SSLEngine.Abstraction\SSLEngine.Abstraction.csproj" />
+    <ProjectReference Include="..\..\src\SSLEngine.Core\SSLEngine.Core.csproj" />
   </ItemGroup>
 
 </Project>
