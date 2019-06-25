@@ -15,6 +15,9 @@
     <PackageTags>SSL</PackageTags>
     <Description>C# wrapper for the popular OpenSSL library.</Description>
     <Authors>Matthew Hope</Authors>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
