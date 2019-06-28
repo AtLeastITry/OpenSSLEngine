@@ -42,12 +42,16 @@ steps:
     packagesToPack: 'src/**/*.csproj'
     versioningScheme: 'off'
     verbosityPack: 'Quiet'
-    
-- task: DotNetCoreCLI@2
+
+- task: VSTest@2
+  displayName: 'dotnet run tests'
   inputs:
-    command: 'test'
-    projects: 'tests/**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: 'tests/**/*.csproj'
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    vsTestVersion: '16.0'
+    runInParallel: true
+    rerunFailedTests: false
 
 - task: PublishBuildArtifacts@1
   inputs:
