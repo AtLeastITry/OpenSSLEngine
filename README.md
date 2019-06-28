@@ -6,8 +6,8 @@
 ### Referencing the packages
 There are two packages you'll need to reference:
 
-- [SSLEngine.Abstraction](https://www.nuget.org/packages/OpenSSLEngine.Abstraction/)
-- [SSLEngine.Core](https://www.nuget.org/packages/OpenSSLEngine.Core/)
+- [SSLEngine.Abstraction](https://www.nuget.org/packages/SSLEngine.Abstraction/)
+- [SSLEngine.Core](https://www.nuget.org/packages/SSLEngine.Core/)
 
 ### Setting up DI
 To set up DI all you need to do is call the `AddSSL()` method on the service collection:
