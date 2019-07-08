@@ -24,14 +24,7 @@ steps:
   displayName: 'dotnet restore'
   inputs:
     command: 'restore'
-    projects: |       
-      src/SSLEngine.Abstraction/SSLEngine.Abstraction.csproj
-        src/SSLEngine.Core/SSLEngine.Core.csproj
-        src/SSLEngine.Domain/SSLEngine.Domain.csproj
-        src/SSLEngine.Linux/SSLEngine.Linux.csproj
-        src/SSLEngine.OSX/SSLEngine.OSX.csproj
-        src/SSLEngine.Windows/SSLEngine.Windows.csproj
-        tests/SSLEngine.Tests.Functionality/SSLEngine.Tests.Functionality.csproj
+    projects: '**/*.csproj' 
     verbosityRestore: 'Quiet'
 
 
@@ -39,61 +32,14 @@ steps:
   displayName: 'dotnet build'
   inputs:
     command: 'build'
-    projects: | 
-      src/SSLEngine.Abstraction/SSLEngine.Abstraction.csproj
-        src/SSLEngine.Core/SSLEngine.Core.csproj
-        src/SSLEngine.Domain/SSLEngine.Domain.csproj
-        src/SSLEngine.Linux/SSLEngine.Linux.csproj
-        src/SSLEngine.OSX/SSLEngine.OSX.csproj
-        src/SSLEngine.Windows/SSLEngine.Windows.csproj
-        tests/SSLEngine.Tests.Functionality/SSLEngine.Tests.Functionality.csproj
+    projects: '**/*.csproj'      
     arguments: '-c $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet pack Abstraction'
+  displayName: 'dotnet pack'
   inputs:
     command: 'pack'
-    packagesToPack: 'src/SSLEngine.Abstraction/SSLEngine.Abstraction.csproj'
-    versioningScheme: 'off'
-    verbosityPack: 'Quiet'
-
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet pack Core'
-  inputs:
-    command: 'pack'
-    packagesToPack: 'src/SSLEngine.Core/SSLEngine.Core.csproj'
-    versioningScheme: 'off'
-    verbosityPack: 'Quiet'
-
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet pack Domain'
-  inputs:
-    command: 'pack'
-    packagesToPack: 'src/SSLEngine.Domain/SSLEngine.Domain.csproj'
-    versioningScheme: 'off'
-    verbosityPack: 'Quiet'
-
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet pack Linux'
-  inputs:
-    command: 'pack'
-    packagesToPack: 'src/SSLEngine.Linux/SSLEngine.Linux.csproj'
-    versioningScheme: 'off'
-    verbosityPack: 'Quiet'
-
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet pack OSX'
-  inputs:
-    command: 'pack'
-    packagesToPack: 'src/SSLEngine.OSX/SSLEngine.OSX.csproj'
-    versioningScheme: 'off'
-    verbosityPack: 'Quiet'
-
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet pack Windows'
-  inputs:
-    command: 'pack'
-    packagesToPack: 'src/SSLEngine.Windows/SSLEngine.Windows.csproj'
+    packagesToPack: 'src/**/*.csproj'
     versioningScheme: 'off'
     verbosityPack: 'Quiet'
 
@@ -101,7 +47,7 @@ steps:
   displayName: 'dotnet run tests'
   inputs:
     testSelector: 'testAssemblies'
-    testAssemblyVer2: 'tests\SSLEngine.Tests.Functionality\bin\$(BuildConfiguration)\netcoreapp2.2\SSLEngine.Tests.Functionality.dll'
+    testAssemblyVer2: '**/Tests*.dll'
     searchFolder: '$(System.DefaultWorkingDirectory)'
     vsTestVersion: '16.0'
     runInParallel: true
