@@ -2,6 +2,7 @@
 using SSLEngine.Abstraction.Commands;
 using SSLEngine.Abstraction.Commands.Pkcs12;
 using SSLEngine.Abstraction.Commands.Req;
+using SSLEngine.Domain;
 using System;
 using System.Threading.Tasks;
 
@@ -12,7 +13,8 @@ namespace SSLEngine.Core
         private readonly ICommand<Pkcs12Options, Pkcs12Input> _pkcsS12Command;
         private readonly ICommand<ReqOptions, ReqInput> _reqCommand;
 
-        public SSLEngine(ICommand<Pkcs12Options, Pkcs12Input> pkcsS12Command, ICommand<ReqOptions, ReqInput> reqCommand)
+        public SSLEngine(ICommand<Pkcs12Options, Pkcs12Input> pkcsS12Command, 
+            ICommand<ReqOptions, ReqInput> reqCommand)
         {
             if (pkcsS12Command == null)
                 throw new ArgumentNullException(nameof(pkcsS12Command));

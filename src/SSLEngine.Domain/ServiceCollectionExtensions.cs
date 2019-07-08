@@ -33,6 +33,7 @@ namespace SSLEngine.Domain
                 throw new ArgumentNullException(nameof(source));
 
             source.TryAdd(GetCommands());
+            source.TryAdd(GetServices());
 
             return source;
         }
@@ -41,6 +42,11 @@ namespace SSLEngine.Domain
         {
             yield return ServiceDescriptor.Scoped<ICommand<ReqOptions, ReqInput>, ReqCommand>();
             yield return ServiceDescriptor.Scoped<ICommand<Pkcs12Options, Pkcs12Input>, Pkcs12Command>();
+        }
+
+        private static IEnumerable<ServiceDescriptor> GetServices()
+        {
+            yield return ServiceDescriptor.Scoped<ISSLEngineProcessFactory, SSLEngineProcessFactory>();
         }
     }
 }

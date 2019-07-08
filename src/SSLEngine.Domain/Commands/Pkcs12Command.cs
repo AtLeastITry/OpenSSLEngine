@@ -5,7 +5,7 @@ namespace SSLEngine.Domain
 {
     public class Pkcs12Command : OpenSSLCommand<Pkcs12Options, Pkcs12Input>
     {
-        public Pkcs12Command(ISSLResourceHandler sslResourceHandler) : base(sslResourceHandler)
+        public Pkcs12Command(ISSLEngineProcessFactory sslEngineProcessFactory) : base(sslEngineProcessFactory)
         {
         }
     }

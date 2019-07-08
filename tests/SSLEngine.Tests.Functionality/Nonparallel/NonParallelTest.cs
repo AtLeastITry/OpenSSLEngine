@@ -2,19 +2,18 @@
 using SSLEngine.Abstraction;
 using SSLEngine.Core;
 
-namespace SSLEngine.Tests.Functionality
+namespace SSLEngine.Tests.Functionality.NonParallel
 {
-    public class BaseTest
+    public class NonParallelTest
     {
         protected readonly ISSLEngine _engine;
 
-        public BaseTest()
+        public NonParallelTest()
         {
             var services = new ServiceCollection();
             services.AddSSl(options => 
             {
-                options.EnableParallelExecution = true;
-                options.DeleteDirectory = false;
+                options.EnableParallelExecution = false;
             });
             var serviceProvider = services.BuildServiceProvider();
             _engine = serviceProvider.GetRequiredService<ISSLEngine>();

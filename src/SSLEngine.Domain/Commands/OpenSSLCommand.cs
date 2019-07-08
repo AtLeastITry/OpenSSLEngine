@@ -1,10 +1,7 @@
-﻿using SSLEngine.Abstraction;
-using SSLEngine.Abstraction.Commands;
+﻿using SSLEngine.Abstraction.Commands;
 using SSLEngine.Domain.Commands;
 using System;
 using System.Diagnostics;
-using System.IO;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,22 +11,17 @@ namespace SSLEngine.Domain
         where TOptions : ICommandOptions
         where TInput : ICommandInput
     {
-        protected readonly ISSLResourceHandler _sslResourceHandler;
+        private readonly ISSLEngineProcessFactory _sslEngineProcessFactory;
 
-        public OpenSSLCommand(ISSLResourceHandler sslResourceHandler)
+        public OpenSSLCommand(ISSLEngineProcessFactory sslEngineProcessFactory)
         {
-            if (sslResourceHandler == null)
-                throw new ArgumentNullException(nameof(sslResourceHandler));
+            if (sslEngineProcessFactory == null)
+                throw new ArgumentNullException(nameof(sslEngineProcessFactory));
 
-            _sslResourceHandler = sslResourceHandler;
+            _sslEngineProcessFactory = sslEngineProcessFactory;
         }
 
-        private TempProcess BuildProcess()
-        {
-            return new TempProcess(_sslResourceHandler);
-        }
-
-        private static Task WaitForUserInputAsync(TempProcess process)
+        private static Task WaitForUserInputAsync(SSLEngineProcess process)
         {
             //while (!CheckProcessThreads(process.Threads));
             Thread.Sleep(1000);
@@ -37,7 +29,7 @@ namespace SSLEngine.Domain
             return Task.CompletedTask;
         }
 
-        private static void WaitForUserInput(TempProcess process)
+        private static void WaitForUserInput(SSLEngineProcess process)
         {
             //while (!CheckProcessThreads(process.Threads)) ;
             Thread.Sleep(1000);
@@ -60,7 +52,7 @@ namespace SSLEngine.Domain
 
         public void Execute(TOptions options, TInput input)
         {
-            using (var process = BuildProcess())
+            using (var process = _sslEngineProcessFactory.Create())
             {
                 process.StandardInput.WriteLine(BuildCommand(options));
 
@@ -77,7 +69,7 @@ namespace SSLEngine.Domain
 
         public async Task ExecuteAsync(TOptions options, TInput input)
         {
-            using (var process = BuildProcess())
+            using (var process = _sslEngineProcessFactory.Create())
             {
                 process.StandardInput.WriteLine(BuildCommand(options));
 

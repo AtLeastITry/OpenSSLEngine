@@ -29,17 +29,11 @@ namespace SSLEngine.Windows
         }
         public string GetOpenSSLConfigPath()
         {
-            if (!_extracted)
-                throw new ResourcesNotExtractedException();
-
             return $@"{_path}\lib\openssl.cfg";
         }
 
         public string GetOpenSSLStartPath()
         {
-            if (!_extracted)
-                throw new ResourcesNotExtractedException();
-
             return $@"{_path}\lib\openssl.exe";
         }
 
@@ -59,10 +53,17 @@ namespace SSLEngine.Windows
 
                 foreach (var resource in assembly.GetManifestResourceNames())
                 {
-                    Stream stream = assembly.GetManifestResourceStream(resource);
-                    byte[] bytes = new byte[(int)stream.Length];
-                    stream.Read(bytes, 0, bytes.Length);
-                    File.WriteAllBytes(BuildPath(resource), bytes);
+                    try
+                    {
+                        Stream stream = assembly.GetManifestResourceStream(resource);
+                        byte[] bytes = new byte[(int)stream.Length];
+                        stream.Read(bytes, 0, bytes.Length);
+                        File.WriteAllBytes(BuildPath(resource), bytes);
+                    }
+                    catch
+                    {
+                        continue;
+                    }
                 }
 
                 _extracted = true;

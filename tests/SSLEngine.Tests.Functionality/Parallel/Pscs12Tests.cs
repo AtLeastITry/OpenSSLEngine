@@ -1,18 +1,20 @@
+using SSLEngine.Abstraction.Commands.Pkcs12;
 using SSLEngine.Abstraction.Commands.Req;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace SSLEngine.Tests.Functionality
+namespace SSLEngine.Tests.Functionality.Parrallel
 {
-    public class ReqTests : BaseTest
+    public class Pscs12Tests : ParallelTest
     {
         [Fact]
-        public async Task Files_Are_Created_Async()
+        public async Task File_Created_Async()
         {
             var keyFilePath = $"{Path.GetTempPath()}\\{Guid.NewGuid()}.key";
             var cerFilePath = $"{Path.GetTempPath()}\\{Guid.NewGuid()}.cer";
+            var pfxFilePath = $"{Path.GetTempPath()}\\{Guid.NewGuid()}.pfx";
 
             await _engine.ReqAsync(
                 options: new ReqOptions
@@ -36,14 +38,26 @@ namespace SSLEngine.Tests.Functionality
                 }
             );
 
-            Assert.True(File.Exists(keyFilePath) && File.Exists(cerFilePath));
+            await _engine.Pkcs12Async(
+                options: new Pkcs12Options
+                {
+                    Export = true,
+                    In = cerFilePath,
+                    InKey = keyFilePath,
+                    Out = pfxFilePath,
+                    PassOut = "pass:1234"
+                }
+            );
+
+            Assert.True(File.Exists(pfxFilePath));
         }
 
         [Fact]
-        public void Files_Are_Created()
+        public void File_Created()
         {
             var keyFilePath = $"{Path.GetTempPath()}\\{Guid.NewGuid()}.key";
             var cerFilePath = $"{Path.GetTempPath()}\\{Guid.NewGuid()}.cer";
+            var pfxFilePath = $"{Path.GetTempPath()}\\{Guid.NewGuid()}.pfx";
 
             _engine.Req(
                 options: new ReqOptions
@@ -67,17 +81,28 @@ namespace SSLEngine.Tests.Functionality
                 }
             );
 
-            Assert.True(File.Exists(keyFilePath) && File.Exists(cerFilePath));
+            _engine.Pkcs12(
+                options: new Pkcs12Options
+                {
+                    Export = true,
+                    In = cerFilePath,
+                    InKey = keyFilePath,
+                    Out = pfxFilePath,
+                    PassOut = "pass:1234"
+                }
+            );
+
+            Assert.True(File.Exists(pfxFilePath));
         }
 
         [Fact]
         public async Task Parallel_Without_Conflict_Async()
         {
             await Task.WhenAll(
-                Files_Are_Created_Async(),
-                Files_Are_Created_Async(),
-                Files_Are_Created_Async(),
-                Files_Are_Created_Async()
+                File_Created_Async(),
+                File_Created_Async(),
+                File_Created_Async(),
+                File_Created_Async()
             );
         }
     }

@@ -5,9 +5,9 @@ using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace SSLEngine.Tests.Functionality
+namespace SSLEngine.Tests.Functionality.NonParallel
 {
-    public class Pscs12Tests : BaseTest
+    public class Pscs12Tests : NonParallelTest
     {
         [Fact]
         public async Task File_Created_Async()
