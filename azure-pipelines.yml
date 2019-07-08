@@ -47,7 +47,7 @@ steps:
   displayName: 'dotnet run tests'
   inputs:
     testSelector: 'testAssemblies'
-    testAssemblyVer2: '**/Tests*.dll'
+    testAssemblyVer2: 'tests/**/bin/$(BuildConfiguration)/*/*.dll'
     searchFolder: '$(System.DefaultWorkingDirectory)'
     vsTestVersion: '16.0'
     runInParallel: true
