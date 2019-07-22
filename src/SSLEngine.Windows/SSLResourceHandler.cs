@@ -25,7 +25,7 @@ namespace SSLEngine.Windows
             _options = options.Value;
 
             if (!_options.EnableParallelExecution)
-                _path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                _path = Path.GetTempPath();
         }
         public string GetOpenSSLConfigPath()
         {
@@ -40,7 +40,7 @@ namespace SSLEngine.Windows
         public void Extract()
         {
             if (_options.EnableParallelExecution)
-                _path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Guid.NewGuid().ToString());
+                _path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
 
             if (_options.EnableParallelExecution || !_extracted)
             {
